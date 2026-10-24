@@ -1,0 +1,6 @@
+# the copilot itself
+numpy>=2.0
+scikit-learn>=1.5
+# the evaluation harness runs the real HOI platform API in-process; install its requirements too:
+#   pip install -r ../INNOV8/platform_api/requirements.txt
+pytest>=8
