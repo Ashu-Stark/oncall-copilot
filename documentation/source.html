@@ -1,0 +1,193 @@
+<h2>Overview</h2>
+<p>The On-call Runbook Copilot helps the engineer on call during an incident. When an alert fires on a production service,
+it finds the runbook that matches the symptoms, <b>checks that runbook's claims against the service's own logs</b>, and
+writes an incident note: the root cause, the log lines that prove it, and the next steps. If no runbook is confirmed by the
+logs, it answers <b>UNKNOWN</b> and escalates instead of guessing.</p>
+<div class="stats">
+  <div class="stat"><b>0%</b><span>false alarms on healthy traffic</span></div>
+  <div class="stat"><b>100%</b><span>correct root cause on detected incidents</span></div>
+  <div class="stat"><b>3 → 0</b><span>wrong diagnoses, without → with log verification</span></div>
+  <div class="stat"><b>55</b><span>faults injected into a real API</span></div>
+</div>
+<p>It runs against a real system: the platform API of <b>HOI (Hospitality Operations Intelligence)</b>, a multi-tenant
+FastAPI + MongoDB service. HOI's code is not modified; faults are injected from outside by swapping dependencies HOI
+already isolates, so the copilot reads exactly the log lines HOI writes in production.</p>
+<img class="shot" src="file:///C:/Users/ashut/Downloads/New%20folder%20(9)/oncall-copilot/docs/screenshot.png" alt="Live incident gallery">
+
+<h2>The problem</h2>
+<p>At 3 a.m. an alert says "38% of requests are failing". The engineer must work out <i>why</i>: is the database down,
+did a deploy break configuration, is someone attacking the login endpoint? Teams write <b>runbooks</b> ("if you see X,
+check A, B and C; the cause is usually D"), but under pressure people pick the wrong runbook, or trust a symptom that
+several different causes share.</p>
+<p>The hard cases are <b>look-alike incidents</b>:</p>
+<table>
+<tr><th>Symptom</th><th>Possible causes that look the same</th><th>What separates them</th></tr>
+<tr><td>High latency</td><td>Slow database · cold start after idle</td><td>Is the slowness sustained, or only in the first requests?</td></tr>
+<tr><td>Spike of HTTP 401</td><td>Signing secret rotated · password guessing · normal token expiry</td><td>Are the 401s spread over many endpoints, concentrated on <code>/auth/login</code>, or a trickle?</td></tr>
+<tr><td>Spike of HTTP 429</td><td>Rate limit set too low · brute-force attack</td><td>Which endpoints get 429: guest chat across rooms, or the login endpoint?</td></tr>
+<tr><td>AI answers degrade</td><td>Provider rate limit · missing API key · model output changed</td><td>The exact fallback reason in the logs</td></tr>
+</table>
+<p>A pure search or LLM approach picks by <i>wording</i> and confuses these. The copilot picks by <i>evidence</i>.</p>
+
+<h2>Architecture</h2>
+<div class="mermaid">
+flowchart LR
+  F[Fault injector] --> H[HOI platform API<br/>real code, in-process]
+  H --> L[(Log store<br/>SQLite)]
+  L --> A{Alert rules}
+  A -- alert --> R[Hybrid retrieval<br/>BM25 + LSA, RRF]
+  R -- top 5 runbooks --> V[Verify checks<br/>read-only tools]
+  V -- all checks pass --> G[Grounding gate]
+  V -- none pass --> U[UNKNOWN]
+  G --> N[Incident note]
+</div>
+<table>
+<tr><th>Component</th><th>File</th><th>Responsibility</th></tr>
+<tr><td>Log store</td><td><code>copilot/logstore.py</code></td><td>Captures Python log records into SQLite; parses HOI's access lines (<code>rid=… GET /rooms -&gt; 500 4ms</code>) into status, path and latency columns.</td></tr>
+<tr><td>Tools</td><td><code>copilot/tools.py</code></td><td>Read-only queries: status counts, latency percentiles and trend, 401 spread, log search, top error templates, health probe.</td></tr>
+<tr><td>Alert rules</td><td><code>copilot/alerts.py</code></td><td>Decide <i>what</i> looks wrong (error rate, readiness, latency, 401/429 spikes, AI fallbacks, dependency errors, startup failure).</td></tr>
+<tr><td>Runbooks</td><td><code>runbooks/*.md</code>, <code>copilot/runbooks.py</code></td><td>16 Markdown runbooks with a machine-checkable <code>checks</code> block; split into section chunks for retrieval.</td></tr>
+<tr><td>Retrieval</td><td><code>copilot/retrieval.py</code></td><td>BM25 written out by hand, LSA vectors (TF-IDF + truncated SVD), Reciprocal Rank Fusion.</td></tr>
+<tr><td>Investigator</td><td><code>copilot/agent.py</code></td><td>Builds the query, verifies candidate runbooks, applies the grounding gate, renders the note.</td></tr>
+<tr><td>LLM investigator</td><td><code>copilot/llm_agent.py</code></td><td>Optional: an LLM chooses the tools via function calling; same grounding gate.</td></tr>
+<tr><td>Harness</td><td><code>harness/</code></td><td>Runs HOI in-process on an in-memory database, generates traffic, injects faults.</td></tr>
+<tr><td>Evaluation</td><td><code>eval/run_eval.py</code></td><td>55 scenarios, five modes (ablation), metrics and misses.</td></tr>
+<tr><td>Demo site</td><td><code>site/build_site.py</code></td><td>Runs every fault and publishes the incident gallery to GitHub Pages.</td></tr>
+</table>
+
+<h2>How an incident is investigated</h2>
+<h3>1. Alert</h3>
+<p>Alert rules run over the log store. Each alert carries a summary and the ids of the log rows that triggered it.
+Thresholds are assumptions for a small service (tens of requests per window), for example <i>5xx share ≥ 10%</i> or
+<i>p95 latency ≥ 400 ms</i>.</p>
+<h3>2. Query</h3>
+<p>The investigator writes the query an engineer would type: the alert names and summaries, the three most frequent
+warning/error <i>templates</i> (log lines with ids, tokens and numbers replaced, so identical messages group together),
+and the most common AI fallback reason.</p>
+<h3>3. Retrieve</h3>
+<p>The query is ranked against runbook sections by two methods, which are fused by rank:</p>
+<ul>
+<li><b>BM25</b>: exact words such as <code>ServerSelectionTimeoutError</code> or <code>429</code>. The tokenizer also splits CamelCase error names into words.</li>
+<li><b>LSA vectors</b>: TF-IDF reduced to 48 dimensions with truncated SVD, which captures words that occur together ("slow", "latency", "p95").</li>
+</ul>
+<h3>4. Verify</h3>
+<p>For each of the top 5 runbooks, in rank order, the investigator runs the runbook's checks. A check names a tool, its
+arguments, a field, an operator and a value:</p>
+<pre><code>{"tool": "status_count", "args": {"status": "5xx"}, "field": "share", "op": "&gt;=", "value": 0.1}</code></pre>
+<p>The first runbook whose checks <b>all</b> pass is the diagnosis. Look-alike runbooks contain checks that rule each
+other out (for example, "slow database" requires <code>slow_only_at_start == false</code>; "cold start" requires it to be true).</p>
+<h3>5. Ground and report</h3>
+<p>Before anything is shown, a grounding gate checks that the runbook exists and that every cited log id exists in the
+store. The note lists the alerts, the diagnosis and severity, the root cause, up to six cited log lines and the runbook's
+diagnosis and mitigation steps.</p>
+
+<h2>Retrieval in detail</h2>
+<h3>BM25</h3>
+<p>For a query term <i>t</i> and a section <i>d</i>:</p>
+<pre><code>score(t, d) = idf(t) · f · (k1 + 1) / (f + k1 · (1 − b + b · |d| / avgdl))
+idf(t)      = ln(1 + (N − df + 0.5) / (df + 0.5))</code></pre>
+<p><i>f</i> is how often <i>t</i> occurs in <i>d</i>. <b>k1 = 1.5</b> limits how much repeating a word helps;
+<b>b = 0.75</b> corrects for long sections; the <b>+1</b> inside the logarithm keeps very common words from getting a
+negative weight.</p>
+<h3>Reciprocal Rank Fusion</h3>
+<pre><code>rrf(runbook) = 1 / (60 + rank_bm25) + 1 / (60 + rank_dense)</code></pre>
+<p>RRF uses only ranks, so the two score scales (BM25 sums and cosine similarities) never need to be calibrated against
+each other. A runbook's score is that of its best section.</p>
+
+<h2>The runbooks</h2>
+<table>
+<tr><th>Id</th><th>Runbook</th><th>Severity</th><th>Injected in evaluation?</th></tr>
+<tr><td>RB01</td><td>Database unreachable</td><td>SEV1</td><td>yes</td></tr>
+<tr><td>RB02</td><td>Database slow</td><td>SEV2</td><td>yes</td></tr>
+<tr><td>RB03</td><td>LLM provider rate limited (429)</td><td>SEV3</td><td>yes</td></tr>
+<tr><td>RB04</td><td>LLM API key missing</td><td>SEV3</td><td>yes</td></tr>
+<tr><td>RB05</td><td>LLM output no longer matches schema</td><td>SEV3</td><td>yes</td></tr>
+<tr><td>RB06</td><td>Token signing secret changed</td><td>SEV2</td><td>yes</td></tr>
+<tr><td>RB07</td><td>Password guessing on login</td><td>SEV2</td><td>yes</td></tr>
+<tr><td>RB08</td><td>Tourism portal dependency down</td><td>SEV3/4</td><td>as a no-impact case</td></tr>
+<tr><td>RB09</td><td>Unsafe production configuration</td><td>SEV1</td><td>yes</td></tr>
+<tr><td>RB10</td><td>Rate limit set too low</td><td>SEV2</td><td>yes</td></tr>
+<tr><td>RB11–RB16</td><td>Cold start, token expiry, inventory compensation, dispatch conflicts, CORS, memory pressure</td><td>various</td><td>no: near-miss decoys</td></tr>
+</table>
+
+<h2>Fault injection</h2>
+<p>Each fault swaps one dependency HOI already isolates and is undone afterwards, so scenarios cannot leak into each other.
+The investigation runs <b>while the fault is still active</b>, so health probes see the broken system as on a real on-call.</p>
+<table>
+<tr><th>Fault</th><th>How it is injected</th><th>What HOI logs</th></tr>
+<tr><td>Database down</td><td>MongoDB accessors raise <code>ServerSelectionTimeoutError</code></td><td>500s with that exception; readiness failures</td></tr>
+<tr><td>Database slow</td><td>A proxy sleeps before every collection call</td><td>Latency in seconds, all 200s</td></tr>
+<tr><td>LLM rate limited</td><td>Chat adapter raises "HTTP 429"</td><td><code>concierge fallback to rules: llm call failed (HTTP 429)</code></td></tr>
+<tr><td>LLM key missing</td><td>Keys removed from the environment</td><td><code>… set LLM_API_KEY or GROQ_API_KEY</code></td></tr>
+<tr><td>Schema drift</td><td>Model returns prose or another JSON shape</td><td><code>… invalid JSON for the schema</code></td></tr>
+<tr><td>Secret rotated</td><td>New <code>HOI_JWT_SECRET</code> after tokens were issued</td><td>401s across many endpoints</td></tr>
+<tr><td>Password guessing</td><td>Many failed logins from one IP</td><td>401 then 429 on <code>/auth/login</code></td></tr>
+<tr><td>Rate limit too low</td><td>Guest chat limit set to 1–8 per minute</td><td>429 on guest chat</td></tr>
+<tr><td>Unsafe prod config</td><td>Production mode without secrets</td><td>Startup failure (HOI refuses to boot)</td></tr>
+<tr><td>Portal down</td><td>Places API times out or returns 503</td><td>Nothing: HOI serves cached places (correct answer: no incident)</td></tr>
+</table>
+
+<h2>Evaluation</h2>
+<p>55 scenarios: 11 types × 5 variants with different seeds, fault strengths and background noise (typo logins, 404s).
+Five modes form an ablation, to show what each part contributes.</p>
+<table>
+<tr><th>Mode</th><th>Correct (all 55)</th><th>Correct (41 detected)</th><th>Wrong root cause</th></tr>
+<tr><td><b>Hybrid retrieval + log-verified checks (the copilot)</b></td><td>93%</td><td>100%</td><td>0</td></tr>
+<tr><td>Hybrid retrieval, top-1, no verification</td><td>87%</td><td>93%</td><td>3</td></tr>
+<tr><td>BM25 only, top-1</td><td>87%</td><td>93%</td><td>3</td></tr>
+<tr><td>LSA vectors only, top-1</td><td>87%</td><td>93%</td><td>3</td></tr>
+<tr><td>BM25 + verification</td><td>93%</td><td>100%</td><td>0</td></tr>
+</table>
+<ul>
+<li><b>Verification removes the wrong answers</b> (3 → 0): retrieval by wording confuses the look-alike pairs.</li>
+<li><b>Dense retrieval adds nothing here</b>: 16 short runbooks full of exact error names favour keywords. It should matter with paraphrased alerts or many more runbooks.</li>
+<li><b>All 4 misses are detection misses</b>, not wrong diagnoses: 8 and 12 password guesses stay under the login limit, and chat limits of 5 or 8 per minute were not hit by the test traffic.</li>
+<li><b>No false alarms</b> on 10 scenarios with nothing wrong, including the portal outage that HOI absorbs.</li>
+</ul>
+<div class="note warn"><b>Honest caveat.</b> The same person wrote the faults, the alert rules and the runbook checks, so these
+numbers are optimistic. They show the pipeline works end to end on a real codebase and how its parts compare; they are
+not an accuracy estimate for unseen production incidents.</div>
+
+<h2>LLM investigator (optional)</h2>
+<p><code>copilot/llm_agent.py</code> lets an LLM choose the tools through function calling (any OpenAI-compatible API:
+Groq, OpenAI or a local Ollama). Its final answer must be JSON with a runbook id and cited log ids, and it passes the same
+grounding gate plus one more rule: <b>cited log ids must have been returned by a tool during this investigation</b>, so the
+model cannot invent evidence. It is implemented but not yet evaluated, so no accuracy is claimed for it.</p>
+
+<h2>Safety and design decisions</h2>
+<ul>
+<li><b>Read-only tools.</b> The copilot never restarts, rolls back or changes anything; a human applies the fix.</li>
+<li><b>Abstain rather than guess.</b> A wrong root cause at 3 a.m. sends people down the wrong path; UNKNOWN escalates.</li>
+<li><b>Evidence over wording.</b> Retrieval only proposes; checks against the logs decide.</li>
+<li><b>No secrets in logs.</b> HOI never logs the database URI or guest messages; the copilot only reads what HOI writes.</li>
+</ul>
+
+<h2>Limitations</h2>
+<ul>
+<li>Faults are single and clean; real incidents overlap (a slow database that then times out).</li>
+<li>About 60 requests per scenario from one process; thresholds are set for that scale.</li>
+<li>LSA is learned from 16 runbooks; a pretrained embedding model would generalise better and can be plugged in through <code>Embedder</code>.</li>
+<li>All HOI data is synthetic demo data.</li>
+</ul>
+
+<h2>Running it</h2>
+<pre><code>..\INNOV8\.venv\Scripts\python.exe demo.py --list            # fault names
+..\INNOV8\.venv\Scripts\python.exe demo.py db_down           # one incident note
+..\INNOV8\.venv\Scripts\python.exe -m pytest -q tests        # 11 unit tests
+..\INNOV8\.venv\Scripts\python.exe eval\run_eval.py          # 55 scenarios
+..\INNOV8\.venv\Scripts\python.exe site\build_site.py        # rebuild the live gallery
+$env:GROQ_API_KEY="..."; ..\INNOV8\.venv\Scripts\python.exe eval\run_eval.py --llm</code></pre>
+
+<h2>Interview questions</h2>
+<dl class="qa">
+<dt>Why not just ask an LLM what is wrong?</dt>
+<dd>It would answer from wording and could invent causes. Here every diagnosis must be confirmed by checks on the real logs and cite log lines that exist; otherwise the answer is UNKNOWN.</dd>
+<dt>What does BM25's k1 do? And b?</dt>
+<dd>k1 caps the benefit of repeating a word (term-frequency saturation); b scales how much long documents are penalised.</dd>
+<dt>Why Reciprocal Rank Fusion instead of adding scores?</dt>
+<dd>BM25 scores and cosine similarities are on different scales; RRF only uses ranks, so no calibration is needed.</dd>
+<dt>How do you know it works?</dt>
+<dd>55 injected faults on a real API, five-mode ablation, zero false alarms, and verification taking wrong diagnoses from 3 to 0. And I state that the numbers are optimistic because I wrote the faults and the checks.</dd>
+<dt>What would you do next?</dt>
+<dd>Evaluate the LLM mode, add overlapping faults, use a pretrained embedding model, and test on runbooks and incidents written by someone else.</dd>
+</dl>

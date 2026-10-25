@@ -1,6 +1,9 @@
 # On-call Runbook Copilot for HOI
 
 **[Live incident gallery →](https://ashu-stark.github.io/oncall-copilot/)** one real incident note per fault type, produced by running the copilot against the HOI API.
+· **[Full documentation (PDF)](docs/On-call_Runbook_Copilot_Documentation.pdf)**
+
+[![Live incident gallery](docs/screenshot.png)](https://ashu-stark.github.io/oncall-copilot/)
 
 ```mermaid
 flowchart LR
