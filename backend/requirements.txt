@@ -1,0 +1,22 @@
+# web app
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+alembic>=1.13
+psycopg[binary]>=3.2
+pyjwt>=2.8
+bcrypt>=4.1
+httpx>=0.27
+# the copilot
+numpy>=2.0
+scikit-learn>=1.5
+# the fault simulator runs the HOI platform API in-process (same as eval/run_eval.py)
+pymongo>=4.6
+mongomock>=4.1
+python-multipart>=0.0.9
+pillow>=10.0
+segno>=1.6
+pyyaml>=6.0
+# tests
+pytest>=8
+pgserver>=0.1  # embedded Postgres for local tests when DATABASE_URL is not set

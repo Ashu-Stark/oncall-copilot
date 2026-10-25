@@ -1,0 +1,9 @@
+.git
+**/node_modules
+.pgdata
+frontend/dist
+**/__pycache__
+.env
+*.log
+docs
+documentation

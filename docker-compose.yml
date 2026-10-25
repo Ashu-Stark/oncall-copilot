@@ -1,0 +1,34 @@
+# Local stack: Postgres + API + web.   cp .env.example .env  (fill it in)   then   docker compose up --build
+# Open http://localhost:8080
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: oncall
+      POSTGRES_USER: oncall
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oncall -d oncall"]
+      interval: 3s
+      retries: 20
+
+  api:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    environment:
+      DATABASE_URL: postgresql+psycopg://oncall:${POSTGRES_PASSWORD}@db:5432/oncall
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      ALERT_INGEST_KEY: ${ALERT_INGEST_KEY:?set ALERT_INGEST_KEY in .env}
+      DEMO_MODE: ${DEMO_MODE:-false}
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-}
+      CORS_ORIGINS: http://localhost:8080
+    depends_on:
+      db: { condition: service_healthy }
+
+  web:
+    build: { context: ., dockerfile: frontend/Dockerfile }
+    ports: ["8080:80"]
+    depends_on: [api]
+
+volumes:
+  pgdata:

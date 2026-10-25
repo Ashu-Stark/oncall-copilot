@@ -4,3 +4,7 @@ __pycache__/
 .env
 .pytest_cache/
 eval/run.log
+.pgdata/
+node_modules/
+frontend/dist/
+*.log

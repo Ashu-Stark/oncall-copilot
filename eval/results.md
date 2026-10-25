@@ -13,11 +13,11 @@
 
 | Mode | Accuracy (all) | Accuracy (detected incidents) | Wrong root cause | Abstained | Median ms |
 |---|---|---|---|---|---|
-| full | 93% | 100% | 0 | 0 | 3.0 |
-| hybrid-top1 | 87% | 93% | 3 | 0 | 2.2 |
-| bm25-top1 | 87% | 93% | 3 | 0 | 1.4 |
-| dense-top1 | 87% | 93% | 3 | 0 | 1.8 |
-| bm25+checks | 93% | 100% | 0 | 0 | 1.5 |
+| full | 93% | 100% | 0 | 0 | 3.7 |
+| hybrid-top1 | 87% | 93% | 3 | 0 | 2.5 |
+| bm25-top1 | 87% | 93% | 3 | 0 | 1.5 |
+| dense-top1 | 87% | 93% | 3 | 0 | 2.1 |
+| bm25+checks | 93% | 100% | 0 | 0 | 2.0 |
 
 ## Full copilot by scenario type
 

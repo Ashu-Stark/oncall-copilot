@@ -52,7 +52,11 @@ class Runbook:
 
 
 def parse(path: Path) -> Runbook:
-    text = path.read_text(encoding="utf-8")
+    return parse_text(path.read_text(encoding="utf-8"), path)
+
+
+def parse_text(text: str, path: Path) -> Runbook:
+    """Same as `parse`, for runbooks that live somewhere else (the web app keeps them in Postgres)."""
     m = _TITLE.search(text)
     if not m:
         raise ValueError(f"{path.name}: first line must be '# RBnn · Title'")

@@ -13,35 +13,35 @@
     "accuracy_on_detected_incidents": 1.0,
     "wrong_root_cause": 0,
     "abstained_unknown": 0,
-    "median_ms": 3.0
+    "median_ms": 3.7
    },
    "hybrid-top1": {
     "accuracy_all": 0.873,
     "accuracy_on_detected_incidents": 0.927,
     "wrong_root_cause": 3,
     "abstained_unknown": 0,
-    "median_ms": 2.2
+    "median_ms": 2.5
    },
    "bm25-top1": {
     "accuracy_all": 0.873,
     "accuracy_on_detected_incidents": 0.927,
     "wrong_root_cause": 3,
     "abstained_unknown": 0,
-    "median_ms": 1.4
+    "median_ms": 1.5
    },
    "dense-top1": {
     "accuracy_all": 0.873,
     "accuracy_on_detected_incidents": 0.927,
     "wrong_root_cause": 3,
     "abstained_unknown": 0,
-    "median_ms": 1.8
+    "median_ms": 2.1
    },
    "bm25+checks": {
     "accuracy_all": 0.927,
     "accuracy_on_detected_incidents": 1.0,
     "wrong_root_cause": 0,
     "abstained_unknown": 0,
-    "median_ms": 1.5
+    "median_ms": 2.0
    }
   },
   "full_by_scenario_type": {
@@ -66,7 +66,7 @@
    "seed": 100,
    "noise": 0.03,
    "kw": {},
-   "log_lines": 168,
+   "log_lines": 106,
    "ranked": [
     "RB01",
     "RB13",
@@ -74,7 +74,7 @@
     "RB02",
     "RB09"
    ],
-   "seconds": 9.1,
+   "seconds": 17.4,
    "modes": {
     "full": {
      "pred": "RB01",
@@ -84,19 +84,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      44,
-      46,
-      47,
-      49,
-      50,
-      52,
-      53,
-      55,
-      56,
-      58
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
      ],
      "actionable": true,
-     "ms": 76.0,
+     "ms": 287.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -107,19 +107,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      43,
-      44,
-      47,
-      50,
-      53,
-      56,
-      59,
-      62,
-      65,
-      68
+      23,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40
      ],
      "actionable": true,
-     "ms": 28.3,
+     "ms": 25.9,
      "note": ""
     },
     "bm25-top1": {
@@ -130,19 +130,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      43,
-      44,
-      47,
-      50,
-      53,
-      56,
-      59,
-      62,
-      65,
-      68
+      23,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40
      ],
      "actionable": true,
-     "ms": 21.8,
+     "ms": 27.9,
      "note": ""
     },
     "dense-top1": {
@@ -153,19 +153,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      43,
-      44,
-      47,
-      50,
-      53,
-      56,
-      59,
-      62,
-      65,
-      68
+      23,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40
      ],
      "actionable": true,
-     "ms": 26.8,
+     "ms": 122.0,
      "note": ""
     },
     "bm25+checks": {
@@ -176,19 +176,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      44,
-      46,
-      47,
-      49,
-      50,
-      52,
-      53,
-      55,
-      56,
-      58
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
      ],
      "actionable": true,
-     "ms": 49.6,
+     "ms": 103.9,
      "note": ""
     }
    }
@@ -200,275 +200,7 @@
    "seed": 101,
    "noise": 0.05,
    "kw": {},
-   "log_lines": 167,
-   "ranked": [
-    "RB01",
-    "RB13",
-    "RB02",
-    "RB08",
-    "RB10"
-   ],
-   "seconds": 8.1,
-   "modes": {
-    "full": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      43,
-      45,
-      46,
-      48,
-      49,
-      51,
-      52,
-      54,
-      55,
-      57
-     ],
-     "actionable": true,
-     "ms": 67.6,
-     "note": ""
-    },
-    "hybrid-top1": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      42,
-      43,
-      46,
-      49,
-      52,
-      55,
-      58,
-      61,
-      64,
-      67
-     ],
-     "actionable": true,
-     "ms": 24.0,
-     "note": ""
-    },
-    "bm25-top1": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      42,
-      43,
-      46,
-      49,
-      52,
-      55,
-      58,
-      61,
-      64,
-      67
-     ],
-     "actionable": true,
-     "ms": 18.9,
-     "note": ""
-    },
-    "dense-top1": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      42,
-      43,
-      46,
-      49,
-      52,
-      55,
-      58,
-      61,
-      64,
-      67
-     ],
-     "actionable": true,
-     "ms": 25.3,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      43,
-      45,
-      46,
-      48,
-      49,
-      51,
-      52,
-      54,
-      55,
-      57
-     ],
-     "actionable": true,
-     "ms": 44.5,
-     "note": ""
-    }
-   }
-  },
-  {
-   "id": "db_down-2",
-   "fault": "db_down",
-   "label": "RB01",
-   "seed": 102,
-   "noise": 0.08,
-   "kw": {},
-   "log_lines": 167,
-   "ranked": [
-    "RB01",
-    "RB13",
-    "RB02",
-    "RB08",
-    "RB10"
-   ],
-   "seconds": 2.9,
-   "modes": {
-    "full": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      43,
-      45,
-      46,
-      48,
-      49,
-      51,
-      52,
-      54,
-      55,
-      57
-     ],
-     "actionable": true,
-     "ms": 13.1,
-     "note": ""
-    },
-    "hybrid-top1": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      42,
-      43,
-      46,
-      49,
-      52,
-      55,
-      58,
-      61,
-      64,
-      67
-     ],
-     "actionable": true,
-     "ms": 6.6,
-     "note": ""
-    },
-    "bm25-top1": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      42,
-      43,
-      46,
-      49,
-      52,
-      55,
-      58,
-      61,
-      64,
-      67
-     ],
-     "actionable": true,
-     "ms": 5.2,
-     "note": ""
-    },
-    "dense-top1": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      42,
-      43,
-      46,
-      49,
-      52,
-      55,
-      58,
-      61,
-      64,
-      67
-     ],
-     "actionable": true,
-     "ms": 6.1,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB01",
-     "correct": true,
-     "alerts": [
-      "HighErrorRate",
-      "ReadinessFailing"
-     ],
-     "evidence_ids": [
-      43,
-      45,
-      46,
-      48,
-      49,
-      51,
-      52,
-      54,
-      55,
-      57
-     ],
-     "actionable": true,
-     "ms": 12.1,
-     "note": ""
-    }
-   }
-  },
-  {
-   "id": "db_down-3",
-   "fault": "db_down",
-   "label": "RB01",
-   "seed": 103,
-   "noise": 0.12,
-   "kw": {},
-   "log_lines": 166,
+   "log_lines": 105,
    "ranked": [
     "RB01",
     "RB13",
@@ -486,19 +218,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      42,
-      44,
-      45,
-      47,
-      48,
-      50,
-      51,
-      53,
-      54,
-      56
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
      ],
      "actionable": true,
-     "ms": 26.2,
+     "ms": 20.2,
      "note": ""
     },
     "hybrid-top1": {
@@ -509,19 +241,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      41,
-      42,
-      45,
-      48,
-      51,
-      54,
-      57,
-      60,
-      63,
-      66
+      22,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39
      ],
      "actionable": true,
-     "ms": 17.7,
+     "ms": 9.1,
      "note": ""
     },
     "bm25-top1": {
@@ -532,19 +264,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      41,
-      42,
-      45,
-      48,
-      51,
-      54,
-      57,
-      60,
-      63,
-      66
+      22,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39
      ],
      "actionable": true,
-     "ms": 8.9,
+     "ms": 7.3,
      "note": ""
     },
     "dense-top1": {
@@ -555,19 +287,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      41,
-      42,
-      45,
-      48,
-      51,
-      54,
-      57,
-      60,
-      63,
-      66
+      22,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39
      ],
      "actionable": true,
-     "ms": 11.3,
+     "ms": 7.0,
      "note": ""
     },
     "bm25+checks": {
@@ -578,19 +310,287 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      42,
-      44,
-      45,
-      47,
-      48,
-      50,
-      51,
-      53,
-      54,
-      56
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
      ],
      "actionable": true,
-     "ms": 18.6,
+     "ms": 14.7,
+     "note": ""
+    }
+   }
+  },
+  {
+   "id": "db_down-2",
+   "fault": "db_down",
+   "label": "RB01",
+   "seed": 102,
+   "noise": 0.08,
+   "kw": {},
+   "log_lines": 105,
+   "ranked": [
+    "RB01",
+    "RB13",
+    "RB02",
+    "RB08",
+    "RB10"
+   ],
+   "seconds": 2.7,
+   "modes": {
+    "full": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+     ],
+     "actionable": true,
+     "ms": 23.3,
+     "note": ""
+    },
+    "hybrid-top1": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      22,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39
+     ],
+     "actionable": true,
+     "ms": 5.7,
+     "note": ""
+    },
+    "bm25-top1": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      22,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39
+     ],
+     "actionable": true,
+     "ms": 5.6,
+     "note": ""
+    },
+    "dense-top1": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      22,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39
+     ],
+     "actionable": true,
+     "ms": 4.4,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+     ],
+     "actionable": true,
+     "ms": 19.2,
+     "note": ""
+    }
+   }
+  },
+  {
+   "id": "db_down-3",
+   "fault": "db_down",
+   "label": "RB01",
+   "seed": 103,
+   "noise": 0.12,
+   "kw": {},
+   "log_lines": 104,
+   "ranked": [
+    "RB01",
+    "RB13",
+    "RB02",
+    "RB08",
+    "RB10"
+   ],
+   "seconds": 2.7,
+   "modes": {
+    "full": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "actionable": true,
+     "ms": 21.0,
+     "note": ""
+    },
+    "hybrid-top1": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      21,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38
+     ],
+     "actionable": true,
+     "ms": 6.4,
+     "note": ""
+    },
+    "bm25-top1": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      21,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38
+     ],
+     "actionable": true,
+     "ms": 5.7,
+     "note": ""
+    },
+    "dense-top1": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      21,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38
+     ],
+     "actionable": true,
+     "ms": 5.2,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB01",
+     "correct": true,
+     "alerts": [
+      "HighErrorRate",
+      "ReadinessFailing"
+     ],
+     "evidence_ids": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "actionable": true,
+     "ms": 11.7,
      "note": ""
     }
    }
@@ -602,7 +602,7 @@
    "seed": 104,
    "noise": 0.15,
    "kw": {},
-   "log_lines": 168,
+   "log_lines": 106,
    "ranked": [
     "RB01",
     "RB13",
@@ -610,7 +610,7 @@
     "RB08",
     "RB02"
    ],
-   "seconds": 2.6,
+   "seconds": 2.8,
    "modes": {
     "full": {
      "pred": "RB01",
@@ -620,19 +620,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      44,
-      46,
-      47,
-      49,
-      50,
-      52,
-      53,
-      55,
-      56,
-      58
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
      ],
      "actionable": true,
-     "ms": 12.7,
+     "ms": 14.0,
      "note": ""
     },
     "hybrid-top1": {
@@ -643,19 +643,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      43,
-      44,
-      47,
-      50,
-      53,
-      56,
-      59,
-      62,
-      65,
-      68
+      23,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40
      ],
      "actionable": true,
-     "ms": 6.1,
+     "ms": 5.6,
      "note": ""
     },
     "bm25-top1": {
@@ -666,19 +666,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      43,
-      44,
-      47,
-      50,
-      53,
-      56,
-      59,
-      62,
-      65,
-      68
+      23,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40
      ],
      "actionable": true,
-     "ms": 5.2,
+     "ms": 4.3,
      "note": ""
     },
     "dense-top1": {
@@ -689,19 +689,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      43,
-      44,
-      47,
-      50,
-      53,
-      56,
-      59,
-      62,
-      65,
-      68
+      23,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40
      ],
      "actionable": true,
-     "ms": 5.3,
+     "ms": 4.7,
      "note": ""
     },
     "bm25+checks": {
@@ -712,19 +712,19 @@
       "ReadinessFailing"
      ],
      "evidence_ids": [
-      44,
-      46,
-      47,
-      49,
-      50,
-      52,
-      53,
-      55,
-      56,
-      58
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
      ],
      "actionable": true,
-     "ms": 14.7,
+     "ms": 12.2,
      "note": ""
     }
    }
@@ -738,7 +738,7 @@
    "kw": {
     "delay_ms": 40
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [
     "RB02",
     "RB11",
@@ -746,7 +746,7 @@
     "RB01",
     "RB06"
    ],
-   "seconds": 11.6,
+   "seconds": 11.8,
    "modes": {
     "full": {
      "pred": "RB02",
@@ -755,15 +755,15 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      67,
-      77,
-      89,
-      108,
-      122
+      2,
+      35,
+      41,
+      46,
+      56,
+      63
      ],
      "actionable": true,
-     "ms": 3.8,
+     "ms": 4.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -773,14 +773,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      67,
-      77,
-      89,
-      108,
-      122
+      35,
+      41,
+      46,
+      56,
+      63
      ],
      "actionable": true,
-     "ms": 2.9,
+     "ms": 3.7,
      "note": ""
     },
     "bm25-top1": {
@@ -790,14 +790,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      67,
-      77,
-      89,
-      108,
-      122
+      35,
+      41,
+      46,
+      56,
+      63
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 1.1,
      "note": ""
     },
     "dense-top1": {
@@ -807,14 +807,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      67,
-      77,
-      89,
-      108,
-      122
+      35,
+      41,
+      46,
+      56,
+      63
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 3.0,
      "note": ""
     },
     "bm25+checks": {
@@ -824,15 +824,15 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      67,
-      77,
-      89,
-      108,
-      122
+      2,
+      35,
+      41,
+      46,
+      56,
+      63
      ],
      "actionable": true,
-     "ms": 1.9,
+     "ms": 4.9,
      "note": ""
     }
    }
@@ -846,7 +846,7 @@
    "kw": {
     "delay_ms": 80
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [
     "RB02",
     "RB11",
@@ -863,15 +863,15 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      44,
-      50,
-      81,
-      110,
-      122
+      2,
+      23,
+      26,
+      42,
+      57,
+      63
      ],
      "actionable": true,
-     "ms": 4.0,
+     "ms": 5.2,
      "note": ""
     },
     "hybrid-top1": {
@@ -881,14 +881,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      44,
-      50,
-      81,
-      110,
-      122
+      23,
+      26,
+      42,
+      57,
+      63
      ],
      "actionable": true,
-     "ms": 2.8,
+     "ms": 2.6,
      "note": ""
     },
     "bm25-top1": {
@@ -898,14 +898,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      44,
-      50,
-      81,
-      110,
-      122
+      23,
+      26,
+      42,
+      57,
+      63
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 1.1,
      "note": ""
     },
     "dense-top1": {
@@ -915,14 +915,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      44,
-      50,
-      81,
-      110,
-      122
+      23,
+      26,
+      42,
+      57,
+      63
      ],
      "actionable": true,
-     "ms": 2.5,
+     "ms": 2.1,
      "note": ""
     },
     "bm25+checks": {
@@ -932,15 +932,15 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      44,
-      50,
-      81,
-      110,
-      122
+      2,
+      23,
+      26,
+      42,
+      57,
+      63
      ],
      "actionable": true,
-     "ms": 2.1,
+     "ms": 2.9,
      "note": ""
     }
    }
@@ -954,7 +954,7 @@
    "kw": {
     "delay_ms": 120
    },
-   "log_lines": 125,
+   "log_lines": 65,
    "ranked": [
     "RB02",
     "RB11",
@@ -962,7 +962,7 @@
     "RB01",
     "RB06"
    ],
-   "seconds": 39.9,
+   "seconds": 40.3,
    "modes": {
     "full": {
      "pred": "RB02",
@@ -971,15 +971,16 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      82,
-      107,
-      109,
-      117,
-      124
+      2,
+      43,
+      56,
+      57,
+      61,
+      64,
+      65
      ],
      "actionable": true,
-     "ms": 7.0,
+     "ms": 7.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -989,14 +990,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      82,
-      107,
-      109,
-      117,
-      124
+      43,
+      56,
+      57,
+      61,
+      64
      ],
      "actionable": true,
-     "ms": 4.2,
+     "ms": 4.4,
      "note": ""
     },
     "bm25-top1": {
@@ -1006,14 +1007,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      82,
-      107,
-      109,
-      117,
-      124
+      43,
+      56,
+      57,
+      61,
+      64
      ],
      "actionable": true,
-     "ms": 2.5,
+     "ms": 1.6,
      "note": ""
     },
     "dense-top1": {
@@ -1023,14 +1024,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      82,
-      107,
-      109,
-      117,
-      124
+      43,
+      56,
+      57,
+      61,
+      64
      ],
      "actionable": true,
-     "ms": 3.4,
+     "ms": 2.6,
      "note": ""
     },
     "bm25+checks": {
@@ -1040,15 +1041,16 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      82,
-      107,
-      109,
-      117,
-      124
+      2,
+      43,
+      56,
+      57,
+      61,
+      64,
+      65
      ],
      "actionable": true,
-     "ms": 3.2,
+     "ms": 1.7,
      "note": ""
     }
    }
@@ -1062,7 +1064,7 @@
    "kw": {
     "delay_ms": 160
    },
-   "log_lines": 122,
+   "log_lines": 62,
    "ranked": [
     "RB02",
     "RB11",
@@ -1070,7 +1072,7 @@
     "RB01",
     "RB06"
    ],
-   "seconds": 42.1,
+   "seconds": 42.4,
    "modes": {
     "full": {
      "pred": "RB02",
@@ -1079,16 +1081,16 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      65,
-      78,
-      88,
-      95,
-      107,
-      121
+      2,
+      33,
+      35,
+      40,
+      45,
+      49,
+      62
      ],
      "actionable": true,
-     "ms": 6.9,
+     "ms": 5.2,
      "note": ""
     },
     "hybrid-top1": {
@@ -1098,14 +1100,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      65,
-      78,
-      88,
-      95,
-      107
+      33,
+      35,
+      40,
+      45,
+      49
      ],
      "actionable": true,
-     "ms": 4.3,
+     "ms": 5.5,
      "note": ""
     },
     "bm25-top1": {
@@ -1115,14 +1117,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      65,
-      78,
-      88,
-      95,
-      107
+      33,
+      35,
+      40,
+      45,
+      49
      ],
      "actionable": true,
-     "ms": 2.4,
+     "ms": 2.3,
      "note": ""
     },
     "dense-top1": {
@@ -1132,14 +1134,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      65,
-      78,
-      88,
-      95,
-      107
+      33,
+      35,
+      40,
+      45,
+      49
      ],
      "actionable": true,
-     "ms": 3.6,
+     "ms": 2.3,
      "note": ""
     },
     "bm25+checks": {
@@ -1149,16 +1151,16 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      3,
-      65,
-      78,
-      88,
-      95,
-      107,
-      121
+      2,
+      33,
+      35,
+      40,
+      45,
+      49,
+      62
      ],
      "actionable": true,
-     "ms": 3.6,
+     "ms": 1.8,
      "note": ""
     }
    }
@@ -1172,7 +1174,7 @@
    "kw": {
     "delay_ms": 220
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [
     "RB02",
     "RB11",
@@ -1180,7 +1182,7 @@
     "RB01",
     "RB06"
    ],
-   "seconds": 65.5,
+   "seconds": 65.3,
    "modes": {
     "full": {
      "pred": "RB02",
@@ -1189,16 +1191,16 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      4,
-      47,
-      79,
-      85,
-      111,
-      113,
-      122
+      3,
+      25,
+      41,
+      44,
+      45,
+      60,
+      63
      ],
      "actionable": true,
-     "ms": 7.9,
+     "ms": 2.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -1208,14 +1210,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      47,
-      79,
-      85,
-      111,
-      113
+      25,
+      41,
+      44,
+      45,
+      60
      ],
      "actionable": true,
-     "ms": 6.2,
+     "ms": 1.8,
      "note": ""
     },
     "bm25-top1": {
@@ -1225,14 +1227,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      47,
-      79,
-      85,
-      111,
-      113
+      25,
+      41,
+      44,
+      45,
+      60
      ],
      "actionable": true,
-     "ms": 3.4,
+     "ms": 1.0,
      "note": ""
     },
     "dense-top1": {
@@ -1242,14 +1244,14 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      47,
-      79,
-      85,
-      111,
-      113
+      25,
+      41,
+      44,
+      45,
+      60
      ],
      "actionable": true,
-     "ms": 4.6,
+     "ms": 1.5,
      "note": ""
     },
     "bm25+checks": {
@@ -1259,16 +1261,16 @@
       "HighLatency"
      ],
      "evidence_ids": [
-      4,
-      47,
-      79,
-      85,
-      111,
-      113,
-      122
+      3,
+      25,
+      41,
+      44,
+      45,
+      60,
+      63
      ],
      "actionable": true,
-     "ms": 4.0,
+     "ms": 1.5,
      "note": ""
     }
    }
@@ -1280,7 +1282,7 @@
    "seed": 100,
    "noise": 0.03,
    "kw": {},
-   "log_lines": 131,
+   "log_lines": 71,
    "ranked": [
     "RB03",
     "RB04",
@@ -1288,7 +1290,7 @@
     "RB10",
     "RB06"
    ],
-   "seconds": 1.8,
+   "seconds": 2.0,
    "modes": {
     "full": {
      "pred": "RB03",
@@ -1297,17 +1299,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 3.0,
+     "ms": 4.5,
      "note": ""
     },
     "hybrid-top1": {
@@ -1317,17 +1319,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 3.4,
      "note": ""
     },
     "bm25-top1": {
@@ -1337,17 +1339,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.7,
      "note": ""
     },
     "dense-top1": {
@@ -1357,17 +1359,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 1.7,
+     "ms": 2.7,
      "note": ""
     },
     "bm25+checks": {
@@ -1377,17 +1379,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.9,
      "note": ""
     }
    }
@@ -1399,7 +1401,7 @@
    "seed": 101,
    "noise": 0.05,
    "kw": {},
-   "log_lines": 132,
+   "log_lines": 72,
    "ranked": [
     "RB03",
     "RB04",
@@ -1407,7 +1409,7 @@
     "RB10",
     "RB06"
    ],
-   "seconds": 2.1,
+   "seconds": 2.5,
    "modes": {
     "full": {
      "pred": "RB03",
@@ -1416,18 +1418,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 2.8,
+     "ms": 3.7,
      "note": ""
     },
     "hybrid-top1": {
@@ -1437,18 +1439,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 2.7,
      "note": ""
     },
     "bm25-top1": {
@@ -1458,15 +1460,15 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
      "ms": 1.4,
@@ -1479,18 +1481,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 2.1,
      "note": ""
     },
     "bm25+checks": {
@@ -1500,15 +1502,15 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
      "ms": 1.4,
@@ -1523,7 +1525,7 @@
    "seed": 102,
    "noise": 0.08,
    "kw": {},
-   "log_lines": 135,
+   "log_lines": 75,
    "ranked": [
     "RB03",
     "RB04",
@@ -1531,7 +1533,7 @@
     "RB10",
     "RB06"
    ],
-   "seconds": 2.0,
+   "seconds": 2.4,
    "modes": {
     "full": {
      "pred": "RB03",
@@ -1540,19 +1542,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 3.0,
+     "ms": 3.8,
      "note": ""
     },
     "hybrid-top1": {
@@ -1562,19 +1564,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 2.3,
+     "ms": 2.4,
      "note": ""
     },
     "bm25-top1": {
@@ -1584,16 +1586,16 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
      "ms": 1.4,
@@ -1606,19 +1608,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 2.2,
      "note": ""
     },
     "bm25+checks": {
@@ -1628,16 +1630,16 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
      "ms": 1.5,
@@ -1652,7 +1654,7 @@
    "seed": 103,
    "noise": 0.12,
    "kw": {},
-   "log_lines": 131,
+   "log_lines": 71,
    "ranked": [
     "RB03",
     "RB04",
@@ -1669,18 +1671,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 2.9,
+     "ms": 4.8,
      "note": ""
     },
     "hybrid-top1": {
@@ -1690,141 +1692,15 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
-     ],
-     "actionable": true,
-     "ms": 2.1,
-     "note": ""
-    },
-    "bm25-top1": {
-     "pred": "RB03",
-     "correct": true,
-     "alerts": [
-      "AiFallbackSpike"
-     ],
-     "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
-     ],
-     "actionable": true,
-     "ms": 1.4,
-     "note": ""
-    },
-    "dense-top1": {
-     "pred": "RB03",
-     "correct": true,
-     "alerts": [
-      "AiFallbackSpike"
-     ],
-     "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
-     ],
-     "actionable": true,
-     "ms": 1.8,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB03",
-     "correct": true,
-     "alerts": [
-      "AiFallbackSpike"
-     ],
-     "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
-     ],
-     "actionable": true,
-     "ms": 1.5,
-     "note": ""
-    }
-   }
-  },
-  {
-   "id": "llm_rate_limited-4",
-   "fault": "llm_rate_limited",
-   "label": "RB03",
-   "seed": 104,
-   "noise": 0.15,
-   "kw": {},
-   "log_lines": 133,
-   "ranked": [
-    "RB03",
-    "RB04",
-    "RB05",
-    "RB10",
-    "RB06"
-   ],
-   "seconds": 2.2,
-   "modes": {
-    "full": {
-     "pred": "RB03",
-     "correct": true,
-     "alerts": [
-      "AiFallbackSpike"
-     ],
-     "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
-     ],
-     "actionable": true,
-     "ms": 3.0,
-     "note": ""
-    },
-    "hybrid-top1": {
-     "pred": "RB03",
-     "correct": true,
-     "alerts": [
-      "AiFallbackSpike"
-     ],
-     "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
      "ms": 2.5,
@@ -1837,19 +1713,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.9,
      "note": ""
     },
     "dense-top1": {
@@ -1859,19 +1734,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 3.1,
      "note": ""
     },
     "bm25+checks": {
@@ -1881,19 +1755,147 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.7,
+     "ms": 2.4,
+     "note": ""
+    }
+   }
+  },
+  {
+   "id": "llm_rate_limited-4",
+   "fault": "llm_rate_limited",
+   "label": "RB03",
+   "seed": 104,
+   "noise": 0.15,
+   "kw": {},
+   "log_lines": 73,
+   "ranked": [
+    "RB03",
+    "RB04",
+    "RB05",
+    "RB10",
+    "RB06"
+   ],
+   "seconds": 2.8,
+   "modes": {
+    "full": {
+     "pred": "RB03",
+     "correct": true,
+     "alerts": [
+      "AiFallbackSpike"
+     ],
+     "evidence_ids": [
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
+     ],
+     "actionable": true,
+     "ms": 4.1,
+     "note": ""
+    },
+    "hybrid-top1": {
+     "pred": "RB03",
+     "correct": true,
+     "alerts": [
+      "AiFallbackSpike"
+     ],
+     "evidence_ids": [
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
+     ],
+     "actionable": true,
+     "ms": 3.3,
+     "note": ""
+    },
+    "bm25-top1": {
+     "pred": "RB03",
+     "correct": true,
+     "alerts": [
+      "AiFallbackSpike"
+     ],
+     "evidence_ids": [
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
+     ],
+     "actionable": true,
+     "ms": 2.1,
+     "note": ""
+    },
+    "dense-top1": {
+     "pred": "RB03",
+     "correct": true,
+     "alerts": [
+      "AiFallbackSpike"
+     ],
+     "evidence_ids": [
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
+     ],
+     "actionable": true,
+     "ms": 3.2,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB03",
+     "correct": true,
+     "alerts": [
+      "AiFallbackSpike"
+     ],
+     "evidence_ids": [
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
+     ],
+     "actionable": true,
+     "ms": 2.2,
      "note": ""
     }
    }
@@ -1905,7 +1907,7 @@
    "seed": 100,
    "noise": 0.03,
    "kw": {},
-   "log_lines": 131,
+   "log_lines": 71,
    "ranked": [
     "RB04",
     "RB05",
@@ -1913,7 +1915,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 1.8,
+   "seconds": 4.0,
    "modes": {
     "full": {
      "pred": "RB04",
@@ -1922,17 +1924,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 3.0,
+     "ms": 3.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -1942,17 +1944,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 3.2,
      "note": ""
     },
     "bm25-top1": {
@@ -1962,17 +1964,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 2.0,
      "note": ""
     },
     "dense-top1": {
@@ -1982,17 +1984,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 3.9,
      "note": ""
     },
     "bm25+checks": {
@@ -2002,17 +2004,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 2.9,
      "note": ""
     }
    }
@@ -2024,7 +2026,7 @@
    "seed": 101,
    "noise": 0.05,
    "kw": {},
-   "log_lines": 132,
+   "log_lines": 72,
    "ranked": [
     "RB04",
     "RB05",
@@ -2032,7 +2034,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 2.1,
+   "seconds": 3.2,
    "modes": {
     "full": {
      "pred": "RB04",
@@ -2041,18 +2043,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 3.1,
+     "ms": 4.1,
      "note": ""
     },
     "hybrid-top1": {
@@ -2062,18 +2064,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 2.1,
+     "ms": 3.6,
      "note": ""
     },
     "bm25-top1": {
@@ -2083,18 +2085,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 1.6,
+     "ms": 2.0,
      "note": ""
     },
     "dense-top1": {
@@ -2104,18 +2106,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 2.0,
+     "ms": 2.7,
      "note": ""
     },
     "bm25+checks": {
@@ -2125,18 +2127,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 2.0,
      "note": ""
     }
    }
@@ -2148,7 +2150,7 @@
    "seed": 102,
    "noise": 0.08,
    "kw": {},
-   "log_lines": 135,
+   "log_lines": 75,
    "ranked": [
     "RB04",
     "RB05",
@@ -2156,7 +2158,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 2.0,
+   "seconds": 3.0,
    "modes": {
     "full": {
      "pred": "RB04",
@@ -2165,19 +2167,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 2.8,
+     "ms": 4.4,
      "note": ""
     },
     "hybrid-top1": {
@@ -2187,19 +2189,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 3.2,
      "note": ""
     },
     "bm25-top1": {
@@ -2209,19 +2211,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 2.0,
      "note": ""
     },
     "dense-top1": {
@@ -2231,19 +2233,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 1.9,
+     "ms": 2.9,
      "note": ""
     },
     "bm25+checks": {
@@ -2253,19 +2255,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 2.1,
      "note": ""
     }
    }
@@ -2277,7 +2279,7 @@
    "seed": 103,
    "noise": 0.12,
    "kw": {},
-   "log_lines": 131,
+   "log_lines": 71,
    "ranked": [
     "RB04",
     "RB05",
@@ -2285,7 +2287,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 1.9,
+   "seconds": 3.8,
    "modes": {
     "full": {
      "pred": "RB04",
@@ -2294,18 +2296,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 2.8,
+     "ms": 7.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -2315,18 +2317,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 3.6,
      "note": ""
     },
     "bm25-top1": {
@@ -2336,18 +2338,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.8,
      "note": ""
     },
     "dense-top1": {
@@ -2357,18 +2359,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 2.2,
      "note": ""
     },
     "bm25+checks": {
@@ -2378,18 +2380,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 2.4,
      "note": ""
     }
    }
@@ -2401,7 +2403,7 @@
    "seed": 104,
    "noise": 0.15,
    "kw": {},
-   "log_lines": 133,
+   "log_lines": 73,
    "ranked": [
     "RB04",
     "RB05",
@@ -2409,7 +2411,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 2.2,
+   "seconds": 4.1,
    "modes": {
     "full": {
      "pred": "RB04",
@@ -2418,19 +2420,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 3.1,
+     "ms": 4.7,
      "note": ""
     },
     "hybrid-top1": {
@@ -2440,19 +2442,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 4.8,
      "note": ""
     },
     "bm25-top1": {
@@ -2462,19 +2464,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 2.5,
      "note": ""
     },
     "dense-top1": {
@@ -2484,19 +2486,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 3.1,
      "note": ""
     },
     "bm25+checks": {
@@ -2506,19 +2508,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 2.3,
      "note": ""
     }
    }
@@ -2532,7 +2534,7 @@
    "kw": {
     "style": "prose"
    },
-   "log_lines": 131,
+   "log_lines": 71,
    "ranked": [
     "RB05",
     "RB04",
@@ -2540,7 +2542,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 2.5,
+   "seconds": 3.6,
    "modes": {
     "full": {
      "pred": "RB05",
@@ -2549,17 +2551,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 5.6,
+     "ms": 4.2,
      "note": ""
     },
     "hybrid-top1": {
@@ -2569,17 +2571,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 4.3,
+     "ms": 3.2,
      "note": ""
     },
     "bm25-top1": {
@@ -2589,17 +2591,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 2.5,
+     "ms": 1.8,
      "note": ""
     },
     "dense-top1": {
@@ -2609,17 +2611,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 3.4,
+     "ms": 2.4,
      "note": ""
     },
     "bm25+checks": {
@@ -2629,17 +2631,17 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      60,
-      63,
-      80,
-      83,
-      86,
-      91,
-      102
+      26,
+      32,
+      34,
+      43,
+      45,
+      47,
+      50,
+      56
      ],
      "actionable": true,
-     "ms": 2.7,
+     "ms": 13.4,
      "note": ""
     }
    }
@@ -2653,7 +2655,7 @@
    "kw": {
     "style": "json"
    },
-   "log_lines": 132,
+   "log_lines": 72,
    "ranked": [
     "RB05",
     "RB04",
@@ -2661,7 +2663,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 2.1,
+   "seconds": 2.6,
    "modes": {
     "full": {
      "pred": "RB05",
@@ -2670,18 +2672,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 3.0,
+     "ms": 2.7,
      "note": ""
     },
     "hybrid-top1": {
@@ -2691,18 +2693,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 2.0,
      "note": ""
     },
     "bm25-top1": {
@@ -2712,18 +2714,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.3,
      "note": ""
     },
     "dense-top1": {
@@ -2733,18 +2735,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 1.7,
      "note": ""
     },
     "bm25+checks": {
@@ -2754,18 +2756,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      46,
-      49,
-      54,
-      57,
-      60,
-      69,
-      112,
-      123,
-      128
+      24,
+      26,
+      29,
+      31,
+      33,
+      38,
+      61,
+      67,
+      70
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.3,
      "note": ""
     }
    }
@@ -2779,7 +2781,7 @@
    "kw": {
     "style": "prose"
    },
-   "log_lines": 135,
+   "log_lines": 75,
    "ranked": [
     "RB05",
     "RB04",
@@ -2796,19 +2798,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 2.9,
+     "ms": 2.7,
      "note": ""
     },
     "hybrid-top1": {
@@ -2818,19 +2820,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 2.3,
+     "ms": 2.0,
      "note": ""
     },
     "bm25-top1": {
@@ -2840,19 +2842,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.2,
      "note": ""
     },
     "dense-top1": {
@@ -2862,19 +2864,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 1.9,
+     "ms": 1.6,
      "note": ""
     },
     "bm25+checks": {
@@ -2884,19 +2886,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      47,
+      25,
+      28,
+      39,
+      42,
+      46,
+      50,
       52,
-      72,
-      77,
-      84,
-      91,
-      94,
-      104,
-      109,
-      122
+      58,
+      61,
+      68
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 1.4,
      "note": ""
     }
    }
@@ -2910,7 +2912,7 @@
    "kw": {
     "style": "json"
    },
-   "log_lines": 131,
+   "log_lines": 71,
    "ranked": [
     "RB05",
     "RB04",
@@ -2927,18 +2929,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 2.8,
+     "ms": 3.0,
      "note": ""
     },
     "hybrid-top1": {
@@ -2948,18 +2950,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 2.4,
+     "ms": 2.7,
      "note": ""
     },
     "bm25-top1": {
@@ -2969,18 +2971,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.6,
      "note": ""
     },
     "dense-top1": {
@@ -2990,18 +2992,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 2.7,
      "note": ""
     },
     "bm25+checks": {
@@ -3011,18 +3013,18 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      43,
-      50,
-      53,
-      72,
-      88,
-      102,
-      105,
-      108,
-      115
+      22,
+      26,
+      28,
+      38,
+      47,
+      55,
+      57,
+      59,
+      63
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 1.7,
      "note": ""
     }
    }
@@ -3036,7 +3038,7 @@
    "kw": {
     "style": "prose"
    },
-   "log_lines": 133,
+   "log_lines": 73,
    "ranked": [
     "RB05",
     "RB04",
@@ -3044,7 +3046,7 @@
     "RB06",
     "RB10"
    ],
-   "seconds": 2.2,
+   "seconds": 2.3,
    "modes": {
     "full": {
      "pred": "RB05",
@@ -3053,19 +3055,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 2.9,
+     "ms": 3.0,
      "note": ""
     },
     "hybrid-top1": {
@@ -3075,16 +3077,16 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
      "ms": 2.2,
@@ -3097,19 +3099,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 1.4,
+     "ms": 1.3,
      "note": ""
     },
     "dense-top1": {
@@ -3119,19 +3121,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 1.8,
      "note": ""
     },
     "bm25+checks": {
@@ -3141,19 +3143,19 @@
       "AiFallbackSpike"
      ],
      "evidence_ids": [
-      49,
-      58,
-      63,
-      70,
-      75,
-      78,
-      83,
-      100,
-      117,
-      131
+      26,
+      31,
+      34,
+      38,
+      41,
+      43,
+      46,
+      55,
+      64,
+      72
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 1.4,
      "note": ""
     }
    }
@@ -3165,7 +3167,7 @@
    "seed": 100,
    "noise": 0.03,
    "kw": {},
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [
     "RB06",
     "RB12",
@@ -3173,7 +3175,7 @@
     "RB02",
     "RB03"
    ],
-   "seconds": 1.7,
+   "seconds": 2.5,
    "modes": {
     "full": {
      "pred": "RB06",
@@ -3182,19 +3184,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      51,
-      53,
-      55,
-      57,
-      65,
-      69,
-      71,
-      73
+      24,
+      25,
+      27,
+      28,
+      29,
+      30,
+      34,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 3.2,
+     "ms": 4.5,
      "note": ""
     },
     "hybrid-top1": {
@@ -3204,19 +3206,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      51,
-      53,
-      55,
-      57,
-      65,
-      69,
-      71,
-      73
+      24,
+      25,
+      27,
+      28,
+      29,
+      30,
+      34,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 1.9,
+     "ms": 3.1,
      "note": ""
     },
     "bm25-top1": {
@@ -3226,19 +3228,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      51,
-      53,
-      55,
-      57,
-      65,
-      69,
-      71,
-      73
+      24,
+      25,
+      27,
+      28,
+      29,
+      30,
+      34,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 1.2,
+     "ms": 1.8,
      "note": ""
     },
     "dense-top1": {
@@ -3248,19 +3250,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      51,
-      53,
-      55,
-      57,
-      65,
-      69,
-      71,
-      73
+      24,
+      25,
+      27,
+      28,
+      29,
+      30,
+      34,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 1.7,
+     "ms": 2.7,
      "note": ""
     },
     "bm25+checks": {
@@ -3270,19 +3272,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      51,
-      53,
-      55,
-      57,
-      65,
-      69,
-      71,
-      73
+      24,
+      25,
+      27,
+      28,
+      29,
+      30,
+      34,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 1.7,
+     "ms": 2.8,
      "note": ""
     }
    }
@@ -3294,7 +3296,7 @@
    "seed": 101,
    "noise": 0.05,
    "kw": {},
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [
     "RB06",
     "RB12",
@@ -3302,7 +3304,7 @@
     "RB02",
     "RB03"
    ],
-   "seconds": 2.0,
+   "seconds": 3.1,
    "modes": {
     "full": {
      "pred": "RB06",
@@ -3311,19 +3313,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      29,
-      44,
-      50,
-      58,
-      60,
-      66,
-      68,
-      70,
-      72,
-      74
+      15,
+      23,
+      26,
+      30,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 3.2,
+     "ms": 4.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -3333,19 +3335,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      29,
-      44,
-      50,
-      58,
-      60,
-      66,
-      68,
-      70,
-      72,
-      74
+      15,
+      23,
+      26,
+      30,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 2.2,
+     "ms": 3.4,
      "note": ""
     },
     "bm25-top1": {
@@ -3355,19 +3357,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      29,
-      44,
-      50,
-      58,
-      60,
-      66,
-      68,
-      70,
-      72,
-      74
+      15,
+      23,
+      26,
+      30,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 1.3,
+     "ms": 1.8,
      "note": ""
     },
     "dense-top1": {
@@ -3377,19 +3379,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      29,
-      44,
-      50,
-      58,
-      60,
-      66,
-      68,
-      70,
-      72,
-      74
+      15,
+      23,
+      26,
+      30,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 2.6,
      "note": ""
     },
     "bm25+checks": {
@@ -3399,19 +3401,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      29,
-      44,
-      50,
-      58,
-      60,
-      66,
-      68,
-      70,
-      72,
-      74
+      15,
+      23,
+      26,
+      30,
+      31,
+      34,
+      35,
+      36,
+      37,
+      38
      ],
      "actionable": true,
-     "ms": 1.7,
+     "ms": 2.4,
      "note": ""
     }
    }
@@ -3423,7 +3425,7 @@
    "seed": 102,
    "noise": 0.08,
    "kw": {},
-   "log_lines": 125,
+   "log_lines": 65,
    "ranked": [
     "RB06",
     "RB12",
@@ -3431,7 +3433,7 @@
     "RB03",
     "RB02"
    ],
-   "seconds": 1.9,
+   "seconds": 3.2,
    "modes": {
     "full": {
      "pred": "RB06",
@@ -3440,19 +3442,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      49,
-      53,
-      55,
-      57,
-      62,
-      66,
-      68,
-      76,
-      78,
-      90
+      26,
+      28,
+      29,
+      30,
+      33,
+      35,
+      36,
+      40,
+      41,
+      47
      ],
      "actionable": true,
-     "ms": 3.1,
+     "ms": 5.0,
      "note": ""
     },
     "hybrid-top1": {
@@ -3462,19 +3464,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      49,
-      53,
-      55,
-      57,
-      62,
-      66,
-      68,
-      76,
-      78,
-      90
+      26,
+      28,
+      29,
+      30,
+      33,
+      35,
+      36,
+      40,
+      41,
+      47
      ],
      "actionable": true,
-     "ms": 2.0,
+     "ms": 3.6,
      "note": ""
     },
     "bm25-top1": {
@@ -3484,19 +3486,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      49,
-      53,
-      55,
-      57,
-      62,
-      66,
-      68,
-      76,
-      78,
-      90
+      26,
+      28,
+      29,
+      30,
+      33,
+      35,
+      36,
+      40,
+      41,
+      47
      ],
      "actionable": true,
-     "ms": 1.3,
+     "ms": 1.8,
      "note": ""
     },
     "dense-top1": {
@@ -3506,19 +3508,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      49,
-      53,
-      55,
-      57,
-      62,
-      66,
-      68,
-      76,
-      78,
-      90
+      26,
+      28,
+      29,
+      30,
+      33,
+      35,
+      36,
+      40,
+      41,
+      47
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 2.8,
      "note": ""
     },
     "bm25+checks": {
@@ -3528,19 +3530,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      49,
-      53,
-      55,
-      57,
-      62,
-      66,
-      68,
-      76,
-      78,
-      90
+      26,
+      28,
+      29,
+      30,
+      33,
+      35,
+      36,
+      40,
+      41,
+      47
      ],
      "actionable": true,
-     "ms": 1.7,
+     "ms": 2.6,
      "note": ""
     }
    }
@@ -3552,7 +3554,7 @@
    "seed": 103,
    "noise": 0.12,
    "kw": {},
-   "log_lines": 122,
+   "log_lines": 62,
    "ranked": [
     "RB06",
     "RB12",
@@ -3560,7 +3562,7 @@
     "RB02",
     "RB03"
    ],
-   "seconds": 2.1,
+   "seconds": 2.5,
    "modes": {
     "full": {
      "pred": "RB06",
@@ -3569,19 +3571,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      53,
-      55,
-      57,
-      59,
-      63,
-      65,
-      67,
-      71
+      23,
+      24,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      34,
+      36
      ],
      "actionable": true,
-     "ms": 3.2,
+     "ms": 3.5,
      "note": ""
     },
     "hybrid-top1": {
@@ -3591,19 +3593,19 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      53,
-      55,
-      57,
-      59,
-      63,
-      65,
-      67,
-      71
+      23,
+      24,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      34,
+      36
      ],
      "actionable": true,
-     "ms": 2.1,
+     "ms": 2.7,
      "note": ""
     },
     "bm25-top1": {
@@ -3613,16 +3615,145 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      53,
-      55,
-      57,
-      59,
-      63,
-      65,
-      67,
-      71
+      23,
+      24,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      34,
+      36
+     ],
+     "actionable": true,
+     "ms": 2.0,
+     "note": ""
+    },
+    "dense-top1": {
+     "pred": "RB06",
+     "correct": true,
+     "alerts": [
+      "AuthFailureSpike"
+     ],
+     "evidence_ids": [
+      23,
+      24,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      34,
+      36
+     ],
+     "actionable": true,
+     "ms": 3.1,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB06",
+     "correct": true,
+     "alerts": [
+      "AuthFailureSpike"
+     ],
+     "evidence_ids": [
+      23,
+      24,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      34,
+      36
+     ],
+     "actionable": true,
+     "ms": 3.7,
+     "note": ""
+    }
+   }
+  },
+  {
+   "id": "jwt_secret_rotated-4",
+   "fault": "jwt_secret_rotated",
+   "label": "RB06",
+   "seed": 104,
+   "noise": 0.15,
+   "kw": {},
+   "log_lines": 63,
+   "ranked": [
+    "RB06",
+    "RB12",
+    "RB07",
+    "RB11",
+    "RB03"
+   ],
+   "seconds": 2.5,
+   "modes": {
+    "full": {
+     "pred": "RB06",
+     "correct": true,
+     "alerts": [
+      "AuthFailureSpike"
+     ],
+     "evidence_ids": [
+      11,
+      21,
+      24,
+      27,
+      28,
+      29,
+      31,
+      34,
+      36,
+      39
+     ],
+     "actionable": true,
+     "ms": 4.0,
+     "note": ""
+    },
+    "hybrid-top1": {
+     "pred": "RB06",
+     "correct": true,
+     "alerts": [
+      "AuthFailureSpike"
+     ],
+     "evidence_ids": [
+      11,
+      21,
+      24,
+      27,
+      28,
+      29,
+      31,
+      34,
+      36,
+      39
+     ],
+     "actionable": true,
+     "ms": 2.3,
+     "note": ""
+    },
+    "bm25-top1": {
+     "pred": "RB06",
+     "correct": true,
+     "alerts": [
+      "AuthFailureSpike"
+     ],
+     "evidence_ids": [
+      11,
+      21,
+      24,
+      27,
+      28,
+      29,
+      31,
+      34,
+      36,
+      39
      ],
      "actionable": true,
      "ms": 1.4,
@@ -3635,170 +3766,41 @@
       "AuthFailureSpike"
      ],
      "evidence_ids": [
-      45,
-      47,
-      53,
-      55,
-      57,
-      59,
-      63,
-      65,
-      67,
-      71
-     ],
-     "actionable": true,
-     "ms": 1.8,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB06",
-     "correct": true,
-     "alerts": [
-      "AuthFailureSpike"
-     ],
-     "evidence_ids": [
-      45,
-      47,
-      53,
-      55,
-      57,
-      59,
-      63,
-      65,
-      67,
-      71
-     ],
-     "actionable": true,
-     "ms": 1.9,
-     "note": ""
-    }
-   }
-  },
-  {
-   "id": "jwt_secret_rotated-4",
-   "fault": "jwt_secret_rotated",
-   "label": "RB06",
-   "seed": 104,
-   "noise": 0.15,
-   "kw": {},
-   "log_lines": 123,
-   "ranked": [
-    "RB06",
-    "RB12",
-    "RB07",
-    "RB11",
-    "RB03"
-   ],
-   "seconds": 2.1,
-   "modes": {
-    "full": {
-     "pred": "RB06",
-     "correct": true,
-     "alerts": [
-      "AuthFailureSpike"
-     ],
-     "evidence_ids": [
-      19,
-      39,
-      45,
-      51,
-      53,
-      55,
-      59,
-      65,
-      69,
-      75
-     ],
-     "actionable": true,
-     "ms": 3.2,
-     "note": ""
-    },
-    "hybrid-top1": {
-     "pred": "RB06",
-     "correct": true,
-     "alerts": [
-      "AuthFailureSpike"
-     ],
-     "evidence_ids": [
-      19,
-      39,
-      45,
-      51,
-      53,
-      55,
-      59,
-      65,
-      69,
-      75
-     ],
-     "actionable": true,
-     "ms": 2.4,
-     "note": ""
-    },
-    "bm25-top1": {
-     "pred": "RB06",
-     "correct": true,
-     "alerts": [
-      "AuthFailureSpike"
-     ],
-     "evidence_ids": [
-      19,
-      39,
-      45,
-      51,
-      53,
-      55,
-      59,
-      65,
-      69,
-      75
-     ],
-     "actionable": true,
-     "ms": 1.3,
-     "note": ""
-    },
-    "dense-top1": {
-     "pred": "RB06",
-     "correct": true,
-     "alerts": [
-      "AuthFailureSpike"
-     ],
-     "evidence_ids": [
-      19,
-      39,
-      45,
-      51,
-      53,
-      55,
-      59,
-      65,
-      69,
-      75
-     ],
-     "actionable": true,
-     "ms": 1.8,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB06",
-     "correct": true,
-     "alerts": [
-      "AuthFailureSpike"
-     ],
-     "evidence_ids": [
-      19,
-      39,
-      45,
-      51,
-      53,
-      55,
-      59,
-      65,
-      69,
-      75
+      11,
+      21,
+      24,
+      27,
+      28,
+      29,
+      31,
+      34,
+      36,
+      39
      ],
      "actionable": true,
      "ms": 1.7,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB06",
+     "correct": true,
+     "alerts": [
+      "AuthFailureSpike"
+     ],
+     "evidence_ids": [
+      11,
+      21,
+      24,
+      27,
+      28,
+      29,
+      31,
+      34,
+      36,
+      39
+     ],
+     "actionable": true,
+     "ms": 2.0,
      "note": ""
     }
    }
@@ -3812,9 +3814,9 @@
    "kw": {
     "attempts": 8
    },
-   "log_lines": 140,
+   "log_lines": 72,
    "ranked": [],
-   "seconds": 2.6,
+   "seconds": 3.2,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -3831,7 +3833,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 0.9,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -3849,7 +3851,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.2,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -3858,7 +3860,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.4,
      "note": "no alert fired"
     }
    }
@@ -3872,9 +3874,9 @@
    "kw": {
     "attempts": 12
    },
-   "log_lines": 149,
+   "log_lines": 77,
    "ranked": [],
-   "seconds": 3.0,
+   "seconds": 3.1,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -3882,7 +3884,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.2,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -3891,7 +3893,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -3900,7 +3902,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -3909,7 +3911,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 0.9,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -3932,7 +3934,263 @@
    "kw": {
     "attempts": 18
    },
-   "log_lines": 158,
+   "log_lines": 80,
+   "ranked": [
+    "RB10",
+    "RB03",
+    "RB07",
+    "RB06",
+    "RB02"
+   ],
+   "seconds": 3.2,
+   "modes": {
+    "full": {
+     "pred": "RB07",
+     "correct": true,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "actionable": true,
+     "ms": 3.4,
+     "note": ""
+    },
+    "hybrid-top1": {
+     "pred": "RB10",
+     "correct": false,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "actionable": true,
+     "ms": 2.1,
+     "note": ""
+    },
+    "bm25-top1": {
+     "pred": "RB10",
+     "correct": false,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "actionable": true,
+     "ms": 1.2,
+     "note": ""
+    },
+    "dense-top1": {
+     "pred": "RB10",
+     "correct": false,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "actionable": true,
+     "ms": 1.8,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB07",
+     "correct": true,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ],
+     "actionable": true,
+     "ms": 2.0,
+     "note": ""
+    }
+   }
+  },
+  {
+   "id": "password_guessing-3",
+   "fault": "password_guessing",
+   "label": "RB07",
+   "seed": 103,
+   "noise": 0.12,
+   "kw": {
+    "attempts": 25
+   },
+   "log_lines": 87,
+   "ranked": [
+    "RB10",
+    "RB02",
+    "RB03",
+    "RB11",
+    "RB07"
+   ],
+   "seconds": 3.2,
+   "modes": {
+    "full": {
+     "pred": "RB07",
+     "correct": true,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+     ],
+     "actionable": true,
+     "ms": 4.9,
+     "note": ""
+    },
+    "hybrid-top1": {
+     "pred": "RB10",
+     "correct": false,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+     ],
+     "actionable": true,
+     "ms": 2.7,
+     "note": ""
+    },
+    "bm25-top1": {
+     "pred": "RB10",
+     "correct": false,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+     ],
+     "actionable": true,
+     "ms": 1.4,
+     "note": ""
+    },
+    "dense-top1": {
+     "pred": "RB10",
+     "correct": false,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+     ],
+     "actionable": true,
+     "ms": 2.0,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB07",
+     "correct": true,
+     "alerts": [
+      "RateLimitSpike"
+     ],
+     "evidence_ids": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+     ],
+     "actionable": true,
+     "ms": 3.1,
+     "note": ""
+    }
+   }
+  },
+  {
+   "id": "password_guessing-4",
+   "fault": "password_guessing",
+   "label": "RB07",
+   "seed": 104,
+   "noise": 0.15,
+   "kw": {
+    "attempts": 35
+   },
+   "log_lines": 99,
    "ranked": [
     "RB10",
     "RB03",
@@ -3949,19 +4207,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      42,
-      44,
-      46,
-      48,
-      50,
-      52,
-      54,
-      56,
-      58,
-      60
+      11,
+      21,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
      ],
      "actionable": true,
-     "ms": 3.9,
+     "ms": 3.8,
      "note": ""
     },
     "hybrid-top1": {
@@ -3971,17 +4229,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      62,
-      64,
-      66,
-      68,
-      70,
-      72,
-      74,
-      76
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
      ],
      "actionable": true,
-     "ms": 2.3,
+     "ms": 2.2,
      "note": ""
     },
     "bm25-top1": {
@@ -3991,14 +4251,16 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      62,
-      64,
-      66,
-      68,
-      70,
-      72,
-      74,
-      76
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
      ],
      "actionable": true,
      "ms": 1.4,
@@ -4011,14 +4273,16 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      62,
-      64,
-      66,
-      68,
-      70,
-      72,
-      74,
-      76
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
      ],
      "actionable": true,
      "ms": 2.0,
@@ -4031,281 +4295,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      42,
-      44,
-      46,
-      48,
-      50,
-      52,
-      54,
-      56,
-      58,
-      60
+      11,
+      21,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
      ],
      "actionable": true,
-     "ms": 2.3,
-     "note": ""
-    }
-   }
-  },
-  {
-   "id": "password_guessing-3",
-   "fault": "password_guessing",
-   "label": "RB07",
-   "seed": 103,
-   "noise": 0.12,
-   "kw": {
-    "attempts": 25
-   },
-   "log_lines": 172,
-   "ranked": [
-    "RB10",
-    "RB02",
-    "RB03",
-    "RB11",
-    "RB07"
-   ],
-   "seconds": 3.4,
-   "modes": {
-    "full": {
-     "pred": "RB07",
-     "correct": true,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      41,
-      43,
-      45,
-      47,
-      49,
-      51,
-      53,
-      55,
-      57,
-      59
-     ],
-     "actionable": true,
-     "ms": 4.9,
-     "note": ""
-    },
-    "hybrid-top1": {
-     "pred": "RB10",
-     "correct": false,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      61,
-      63,
-      65,
-      67,
-      69,
-      71,
-      73,
-      75,
-      77,
-      79
-     ],
-     "actionable": true,
-     "ms": 2.3,
-     "note": ""
-    },
-    "bm25-top1": {
-     "pred": "RB10",
-     "correct": false,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      61,
-      63,
-      65,
-      67,
-      69,
-      71,
-      73,
-      75,
-      77,
-      79
-     ],
-     "actionable": true,
-     "ms": 1.9,
-     "note": ""
-    },
-    "dense-top1": {
-     "pred": "RB10",
-     "correct": false,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      61,
-      63,
-      65,
-      67,
-      69,
-      71,
-      73,
-      75,
-      77,
-      79
-     ],
-     "actionable": true,
-     "ms": 2.1,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB07",
-     "correct": true,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      41,
-      43,
-      45,
-      47,
-      49,
-      51,
-      53,
-      55,
-      57,
-      59
-     ],
-     "actionable": true,
-     "ms": 3.4,
-     "note": ""
-    }
-   }
-  },
-  {
-   "id": "password_guessing-4",
-   "fault": "password_guessing",
-   "label": "RB07",
-   "seed": 104,
-   "noise": 0.15,
-   "kw": {
-    "attempts": 35
-   },
-   "log_lines": 194,
-   "ranked": [
-    "RB10",
-    "RB03",
-    "RB07",
-    "RB06",
-    "RB02"
-   ],
-   "seconds": 3.0,
-   "modes": {
-    "full": {
-     "pred": "RB07",
-     "correct": true,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      19,
-      39,
-      43,
-      45,
-      47,
-      49,
-      51,
-      53,
-      55,
-      57
-     ],
-     "actionable": true,
-     "ms": 4.1,
-     "note": ""
-    },
-    "hybrid-top1": {
-     "pred": "RB10",
-     "correct": false,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      63,
-      65,
-      67,
-      69,
-      71,
-      73,
-      75,
-      77,
-      79,
-      81
-     ],
-     "actionable": true,
-     "ms": 2.5,
-     "note": ""
-    },
-    "bm25-top1": {
-     "pred": "RB10",
-     "correct": false,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      63,
-      65,
-      67,
-      69,
-      71,
-      73,
-      75,
-      77,
-      79,
-      81
-     ],
-     "actionable": true,
-     "ms": 1.7,
-     "note": ""
-    },
-    "dense-top1": {
-     "pred": "RB10",
-     "correct": false,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      63,
-      65,
-      67,
-      69,
-      71,
-      73,
-      75,
-      77,
-      79,
-      81
-     ],
-     "actionable": true,
-     "ms": 2.2,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB07",
-     "correct": true,
-     "alerts": [
-      "RateLimitSpike"
-     ],
-     "evidence_ids": [
-      19,
-      39,
-      43,
-      45,
-      47,
-      49,
-      51,
-      53,
-      55,
-      57
-     ],
-     "actionable": true,
-     "ms": 2.7,
+     "ms": 3.3,
      "note": ""
     }
    }
@@ -4350,7 +4352,7 @@
       1
      ],
      "actionable": true,
-     "ms": 1.5,
+     "ms": 1.2,
      "note": ""
     },
     "bm25-top1": {
@@ -4363,7 +4365,7 @@
       1
      ],
      "actionable": true,
-     "ms": 0.7,
+     "ms": 0.6,
      "note": ""
     },
     "dense-top1": {
@@ -4389,7 +4391,7 @@
       1
      ],
      "actionable": true,
-     "ms": 0.7,
+     "ms": 0.6,
      "note": ""
     }
    }
@@ -4421,7 +4423,7 @@
       1
      ],
      "actionable": true,
-     "ms": 1.9,
+     "ms": 1.5,
      "note": ""
     },
     "hybrid-top1": {
@@ -4434,7 +4436,7 @@
       1
      ],
      "actionable": true,
-     "ms": 1.3,
+     "ms": 1.2,
      "note": ""
     },
     "bm25-top1": {
@@ -4505,7 +4507,7 @@
       1
      ],
      "actionable": true,
-     "ms": 1.6,
+     "ms": 2.7,
      "note": ""
     },
     "hybrid-top1": {
@@ -4518,91 +4520,7 @@
       1
      ],
      "actionable": true,
-     "ms": 1.3,
-     "note": ""
-    },
-    "bm25-top1": {
-     "pred": "RB09",
-     "correct": true,
-     "alerts": [
-      "ServiceDown"
-     ],
-     "evidence_ids": [
-      1
-     ],
-     "actionable": true,
-     "ms": 0.6,
-     "note": ""
-    },
-    "dense-top1": {
-     "pred": "RB09",
-     "correct": true,
-     "alerts": [
-      "ServiceDown"
-     ],
-     "evidence_ids": [
-      1
-     ],
-     "actionable": true,
-     "ms": 1.0,
-     "note": ""
-    },
-    "bm25+checks": {
-     "pred": "RB09",
-     "correct": true,
-     "alerts": [
-      "ServiceDown"
-     ],
-     "evidence_ids": [
-      1
-     ],
-     "actionable": true,
-     "ms": 0.7,
-     "note": ""
-    }
-   }
-  },
-  {
-   "id": "unsafe_prod_config-3",
-   "fault": "unsafe_prod_config",
-   "label": "RB09",
-   "seed": 103,
-   "noise": 0.12,
-   "kw": {},
-   "log_lines": 1,
-   "ranked": [
-    "RB09",
-    "RB08",
-    "RB01",
-    "RB02",
-    "RB11"
-   ],
-   "seconds": 0.0,
-   "modes": {
-    "full": {
-     "pred": "RB09",
-     "correct": true,
-     "alerts": [
-      "ServiceDown"
-     ],
-     "evidence_ids": [
-      1
-     ],
-     "actionable": true,
-     "ms": 1.6,
-     "note": ""
-    },
-    "hybrid-top1": {
-     "pred": "RB09",
-     "correct": true,
-     "alerts": [
-      "ServiceDown"
-     ],
-     "evidence_ids": [
-      1
-     ],
-     "actionable": true,
-     "ms": 1.3,
+     "ms": 2.0,
      "note": ""
     },
     "bm25-top1": {
@@ -4641,7 +4559,91 @@
       1
      ],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 0.9,
+     "note": ""
+    }
+   }
+  },
+  {
+   "id": "unsafe_prod_config-3",
+   "fault": "unsafe_prod_config",
+   "label": "RB09",
+   "seed": 103,
+   "noise": 0.12,
+   "kw": {},
+   "log_lines": 1,
+   "ranked": [
+    "RB09",
+    "RB08",
+    "RB01",
+    "RB02",
+    "RB11"
+   ],
+   "seconds": 0.0,
+   "modes": {
+    "full": {
+     "pred": "RB09",
+     "correct": true,
+     "alerts": [
+      "ServiceDown"
+     ],
+     "evidence_ids": [
+      1
+     ],
+     "actionable": true,
+     "ms": 2.0,
+     "note": ""
+    },
+    "hybrid-top1": {
+     "pred": "RB09",
+     "correct": true,
+     "alerts": [
+      "ServiceDown"
+     ],
+     "evidence_ids": [
+      1
+     ],
+     "actionable": true,
+     "ms": 1.2,
+     "note": ""
+    },
+    "bm25-top1": {
+     "pred": "RB09",
+     "correct": true,
+     "alerts": [
+      "ServiceDown"
+     ],
+     "evidence_ids": [
+      1
+     ],
+     "actionable": true,
+     "ms": 0.5,
+     "note": ""
+    },
+    "dense-top1": {
+     "pred": "RB09",
+     "correct": true,
+     "alerts": [
+      "ServiceDown"
+     ],
+     "evidence_ids": [
+      1
+     ],
+     "actionable": true,
+     "ms": 1.0,
+     "note": ""
+    },
+    "bm25+checks": {
+     "pred": "RB09",
+     "correct": true,
+     "alerts": [
+      "ServiceDown"
+     ],
+     "evidence_ids": [
+      1
+     ],
+     "actionable": true,
+     "ms": 1.0,
      "note": ""
     }
    }
@@ -4673,7 +4675,7 @@
       1
      ],
      "actionable": true,
-     "ms": 1.6,
+     "ms": 2.0,
      "note": ""
     },
     "hybrid-top1": {
@@ -4686,7 +4688,7 @@
       1
      ],
      "actionable": true,
-     "ms": 1.3,
+     "ms": 1.5,
      "note": ""
     },
     "bm25-top1": {
@@ -4699,7 +4701,7 @@
       1
      ],
      "actionable": true,
-     "ms": 0.5,
+     "ms": 0.6,
      "note": ""
     },
     "dense-top1": {
@@ -4739,7 +4741,7 @@
    "kw": {
     "per_minute": 1
    },
-   "log_lines": 122,
+   "log_lines": 62,
    "ranked": [
     "RB10",
     "RB03",
@@ -4747,7 +4749,7 @@
     "RB06",
     "RB02"
    ],
-   "seconds": 1.9,
+   "seconds": 2.2,
    "modes": {
     "full": {
      "pred": "RB10",
@@ -4756,18 +4758,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      26,
+      31,
+      32,
+      40,
+      41,
+      42,
+      44,
       49,
-      59,
-      61,
-      77,
-      79,
-      81,
-      85,
-      95,
-      107
+      55
      ],
      "actionable": true,
-     "ms": 3.3,
+     "ms": 4.0,
      "note": ""
     },
     "hybrid-top1": {
@@ -4777,18 +4779,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      26,
+      31,
+      32,
+      40,
+      41,
+      42,
+      44,
       49,
-      59,
-      61,
-      77,
-      79,
-      81,
-      85,
-      95,
-      107
+      55
      ],
      "actionable": true,
-     "ms": 2.1,
+     "ms": 2.3,
      "note": ""
     },
     "bm25-top1": {
@@ -4798,18 +4800,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      26,
+      31,
+      32,
+      40,
+      41,
+      42,
+      44,
       49,
-      59,
-      61,
-      77,
-      79,
-      81,
-      85,
-      95,
-      107
+      55
      ],
      "actionable": true,
-     "ms": 1.2,
+     "ms": 1.5,
      "note": ""
     },
     "dense-top1": {
@@ -4819,18 +4821,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      26,
+      31,
+      32,
+      40,
+      41,
+      42,
+      44,
       49,
-      59,
-      61,
-      77,
-      79,
-      81,
-      85,
-      95,
-      107
+      55
      ],
      "actionable": true,
-     "ms": 1.7,
+     "ms": 2.4,
      "note": ""
     },
     "bm25+checks": {
@@ -4840,18 +4842,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      26,
+      31,
+      32,
+      40,
+      41,
+      42,
+      44,
       49,
-      59,
-      61,
-      77,
-      79,
-      81,
-      85,
-      95,
-      107
+      55
      ],
      "actionable": true,
-     "ms": 1.6,
+     "ms": 2.1,
      "note": ""
     }
    }
@@ -4865,7 +4867,7 @@
    "kw": {
     "per_minute": 2
    },
-   "log_lines": 121,
+   "log_lines": 61,
    "ranked": [
     "RB10",
     "RB03",
@@ -4873,7 +4875,7 @@
     "RB06",
     "RB02"
    ],
-   "seconds": 2.2,
+   "seconds": 2.5,
    "modes": {
     "full": {
      "pred": "RB10",
@@ -4882,18 +4884,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      52,
-      54,
-      56,
-      64,
-      78,
-      94,
-      104,
-      114,
-      118
+      27,
+      28,
+      29,
+      33,
+      40,
+      48,
+      53,
+      58,
+      60
      ],
      "actionable": true,
-     "ms": 3.8,
+     "ms": 4.2,
      "note": ""
     },
     "hybrid-top1": {
@@ -4903,18 +4905,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      52,
-      54,
-      56,
-      64,
-      78,
-      94,
-      104,
-      114,
-      118
+      27,
+      28,
+      29,
+      33,
+      40,
+      48,
+      53,
+      58,
+      60
      ],
      "actionable": true,
-     "ms": 2.5,
+     "ms": 3.4,
      "note": ""
     },
     "bm25-top1": {
@@ -4924,15 +4926,15 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      52,
-      54,
-      56,
-      64,
-      78,
-      94,
-      104,
-      114,
-      118
+      27,
+      28,
+      29,
+      33,
+      40,
+      48,
+      53,
+      58,
+      60
      ],
      "actionable": true,
      "ms": 1.4,
@@ -4945,18 +4947,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      52,
-      54,
-      56,
-      64,
-      78,
-      94,
-      104,
-      114,
-      118
+      27,
+      28,
+      29,
+      33,
+      40,
+      48,
+      53,
+      58,
+      60
      ],
      "actionable": true,
-     "ms": 2.1,
+     "ms": 1.9,
      "note": ""
     },
     "bm25+checks": {
@@ -4966,18 +4968,18 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
-      52,
-      54,
-      56,
-      64,
-      78,
-      94,
-      104,
-      114,
-      118
+      27,
+      28,
+      29,
+      33,
+      40,
+      48,
+      53,
+      58,
+      60
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 1.5,
      "note": ""
     }
    }
@@ -4991,7 +4993,7 @@
    "kw": {
     "per_minute": 3
    },
-   "log_lines": 121,
+   "log_lines": 61,
    "ranked": [
     "RB10",
     "RB03",
@@ -4999,7 +5001,7 @@
     "RB06",
     "RB02"
    ],
-   "seconds": 3.0,
+   "seconds": 2.2,
    "modes": {
     "full": {
      "pred": "RB10",
@@ -5008,19 +5010,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      23,
+      24,
+      26,
+      30,
+      35,
+      37,
+      40,
+      43,
       44,
-      46,
-      50,
-      58,
-      68,
-      72,
-      78,
-      84,
-      86,
-      90
+      46
      ],
      "actionable": true,
-     "ms": 3.2,
+     "ms": 2.9,
      "note": ""
     },
     "hybrid-top1": {
@@ -5030,19 +5032,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      23,
+      24,
+      26,
+      30,
+      35,
+      37,
+      40,
+      43,
       44,
-      46,
-      50,
-      58,
-      68,
-      72,
-      78,
-      84,
-      86,
-      90
+      46
      ],
      "actionable": true,
-     "ms": 2.1,
+     "ms": 1.8,
      "note": ""
     },
     "bm25-top1": {
@@ -5052,19 +5054,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      23,
+      24,
+      26,
+      30,
+      35,
+      37,
+      40,
+      43,
       44,
-      46,
-      50,
-      58,
-      68,
-      72,
-      78,
-      84,
-      86,
-      90
+      46
      ],
      "actionable": true,
-     "ms": 1.3,
+     "ms": 1.1,
      "note": ""
     },
     "dense-top1": {
@@ -5074,19 +5076,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      23,
+      24,
+      26,
+      30,
+      35,
+      37,
+      40,
+      43,
       44,
-      46,
-      50,
-      58,
-      68,
-      72,
-      78,
-      84,
-      86,
-      90
+      46
      ],
      "actionable": true,
-     "ms": 1.8,
+     "ms": 1.6,
      "note": ""
     },
     "bm25+checks": {
@@ -5096,19 +5098,19 @@
       "RateLimitSpike"
      ],
      "evidence_ids": [
+      23,
+      24,
+      26,
+      30,
+      35,
+      37,
+      40,
+      43,
       44,
-      46,
-      50,
-      58,
-      68,
-      72,
-      78,
-      84,
-      86,
-      90
+      46
      ],
      "actionable": true,
-     "ms": 1.6,
+     "ms": 1.5,
      "note": ""
     }
    }
@@ -5122,9 +5124,9 @@
    "kw": {
     "per_minute": 5
    },
-   "log_lines": 122,
+   "log_lines": 62,
    "ranked": [],
-   "seconds": 1.9,
+   "seconds": 2.4,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5132,7 +5134,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.1,
+     "ms": 2.4,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5141,7 +5143,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.9,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5150,7 +5152,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.8,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5159,7 +5161,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.9,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5168,7 +5170,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 2.0,
      "note": "no alert fired"
     }
    }
@@ -5182,9 +5184,9 @@
    "kw": {
     "per_minute": 8
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
-   "seconds": 2.2,
+   "seconds": 3.7,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5192,7 +5194,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 3.0,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5201,7 +5203,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 2.9,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5210,7 +5212,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 4.2,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5219,7 +5221,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 2.6,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5228,7 +5230,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 2.7,
      "note": "no alert fired"
     }
    }
@@ -5242,9 +5244,9 @@
    "kw": {
     "mode": "timeout"
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
-   "seconds": 1.8,
+   "seconds": 3.7,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5252,7 +5254,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.7,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5261,7 +5263,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.3,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5270,7 +5272,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 6.7,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5279,7 +5281,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5288,7 +5290,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.1,
      "note": "no alert fired"
     }
    }
@@ -5302,9 +5304,9 @@
    "kw": {
     "mode": "refused"
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
-   "seconds": 2.0,
+   "seconds": 4.0,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5312,7 +5314,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.7,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5321,7 +5323,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.2,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5330,7 +5332,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.2,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5339,7 +5341,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.2,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5348,7 +5350,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.2,
      "note": "no alert fired"
     }
    }
@@ -5362,9 +5364,9 @@
    "kw": {
     "mode": "http"
    },
-   "log_lines": 125,
+   "log_lines": 65,
    "ranked": [],
-   "seconds": 2.0,
+   "seconds": 3.6,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5372,7 +5374,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.5,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5381,7 +5383,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.2,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5390,7 +5392,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5399,7 +5401,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5408,7 +5410,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.1,
      "note": "no alert fired"
     }
    }
@@ -5422,9 +5424,9 @@
    "kw": {
     "mode": "timeout"
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
-   "seconds": 2.3,
+   "seconds": 4.2,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5432,7 +5434,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.1,
+     "ms": 1.5,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5441,7 +5443,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 7.1,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5450,7 +5452,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 14.0,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5459,7 +5461,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.6,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5468,7 +5470,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 10.0,
      "note": "no alert fired"
     }
    }
@@ -5482,9 +5484,9 @@
    "kw": {
     "mode": "http"
    },
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
-   "seconds": 2.2,
+   "seconds": 4.4,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5492,7 +5494,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.1,
+     "ms": 1.6,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5501,7 +5503,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.3,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5510,7 +5512,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.8,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5519,7 +5521,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.4,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5528,7 +5530,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.4,
      "note": "no alert fired"
     }
    }
@@ -5540,9 +5542,9 @@
    "seed": 100,
    "noise": 0.03,
    "kw": {},
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
-   "seconds": 1.9,
+   "seconds": 2.8,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5550,7 +5552,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.2,
+     "ms": 1.7,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5559,7 +5561,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.2,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5568,7 +5570,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.2,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5577,7 +5579,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5586,7 +5588,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.6,
      "note": "no alert fired"
     }
    }
@@ -5598,9 +5600,9 @@
    "seed": 101,
    "noise": 0.05,
    "kw": {},
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
-   "seconds": 2.2,
+   "seconds": 4.3,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5608,7 +5610,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.1,
+     "ms": 3.3,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5617,7 +5619,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.9,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5626,7 +5628,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 3.6,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5635,7 +5637,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.4,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5644,7 +5646,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 3.2,
      "note": "no alert fired"
     }
    }
@@ -5656,9 +5658,9 @@
    "seed": 102,
    "noise": 0.08,
    "kw": {},
-   "log_lines": 125,
+   "log_lines": 65,
    "ranked": [],
-   "seconds": 2.0,
+   "seconds": 4.9,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5666,7 +5668,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.6,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5675,7 +5677,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 1.6,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5684,7 +5686,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.3,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5693,7 +5695,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 3.8,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5702,7 +5704,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.8,
+     "ms": 1.9,
      "note": "no alert fired"
     }
    }
@@ -5714,9 +5716,9 @@
    "seed": 103,
    "noise": 0.12,
    "kw": {},
-   "log_lines": 122,
+   "log_lines": 62,
    "ranked": [],
-   "seconds": 2.2,
+   "seconds": 8.7,
    "modes": {
     "full": {
      "pred": "NONE",
@@ -5724,7 +5726,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.3,
+     "ms": 1.0,
      "note": "no alert fired"
     },
     "hybrid-top1": {
@@ -5733,7 +5735,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 0.8,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5742,7 +5744,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 0.7,
      "note": "no alert fired"
     },
     "dense-top1": {
@@ -5751,7 +5753,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 0.8,
      "note": "no alert fired"
     },
     "bm25+checks": {
@@ -5760,7 +5762,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 0.9,
+     "ms": 0.7,
      "note": "no alert fired"
     }
    }
@@ -5772,7 +5774,7 @@
    "seed": 104,
    "noise": 0.15,
    "kw": {},
-   "log_lines": 123,
+   "log_lines": 63,
    "ranked": [],
    "seconds": 2.7,
    "modes": {
@@ -5791,7 +5793,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 1.1,
      "note": "no alert fired"
     },
     "bm25-top1": {
@@ -5809,7 +5811,7 @@
      "alerts": [],
      "evidence_ids": [],
      "actionable": true,
-     "ms": 1.0,
+     "ms": 0.8,
      "note": "no alert fired"
     },
     "bm25+checks": {

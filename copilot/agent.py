@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import operator
 import time
+from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
 
 from .alerts import Alert, evaluate
@@ -115,12 +116,18 @@ def investigate(
     k: int = 5,
     verify_checks: bool = True,
     ranker: str = "hybrid",
+    on_step: Callable[[str, dict], None] | None = None,
 ) -> Diagnosis:
+    """`on_step(kind, data)` is called as the investigation goes (alerts, query, retrieval, each runbook check), so a UI
+    can show progress. It only observes: the diagnosis is the same with or without it."""
+    emit = on_step or (lambda kind, data: None)
     t0 = time.perf_counter()
     alerts = evaluate(t)
+    emit("alerts", {"alerts": [asdict(a) for a in alerts]})
     if not alerts:
         return Diagnosis("NONE", note="no alert fired", elapsed_ms=round((time.perf_counter() - t0) * 1000, 1))
     query = build_query(t, alerts)
+    emit("query", {"query": query})
     if ranker == "bm25":
         cands = [(rb, f"bm25 {s:.2f}") for rb, s, _ in retriever.bm25_only(query)[:k]]
     elif ranker == "dense":
@@ -129,6 +136,7 @@ def investigate(
         cands = [(h.runbook_id, f"rrf {h.score} (bm25 #{h.bm25_rank}, dense #{h.dense_rank}) via {h.best_chunk}") for h in retriever.search(query, k)]
     d = Diagnosis("UNKNOWN", alerts=[a.name for a in alerts], query=query, candidates=[{"runbook": rb, "why": w} for rb, w in cands])
     d.mode = f"{ranker}{'+checks' if verify_checks else ''}"
+    emit("retrieval", {"ranker": ranker, "candidates": d.candidates})
     if not verify_checks:
         top = cands[0][0]
         d.label = top
@@ -137,6 +145,7 @@ def investigate(
         for rb_id, _ in cands:
             ok, results = verify(t, retriever.runbooks[rb_id])
             d.checks.append({"runbook": rb_id, "confirmed": ok, "results": [asdict(r) for r in results]})
+            emit("check", d.checks[-1])
             if ok:
                 d.label = rb_id
                 d.evidence_ids = sorted({i for r in results for i in r.evidence})[:10]

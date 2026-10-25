@@ -1,8 +1,11 @@
 <h2>Overview</h2>
-<p>The On-call Runbook Copilot helps the engineer on call during an incident. When an alert fires on a production service,
-it finds the runbook that matches the symptoms, <b>checks that runbook's claims against the service's own logs</b>, and
-writes an incident note: the root cause, the log lines that prove it, and the next steps. If no runbook is confirmed by the
-logs, it answers <b>UNKNOWN</b> and escalates instead of guessing.</p>
+<p>The On-call Runbook Copilot is an incident-response web app for the engineer on call. Alerts become incidents. For each
+one, the copilot finds the runbook that matches the symptoms, <b>checks that runbook's claims against the service's own
+logs</b>, and reports the root cause, the log lines that prove it, and the next steps, streaming every step to the browser
+as it happens. If no runbook is confirmed by the logs, it answers <b>UNKNOWN</b> and escalates instead of guessing.
+Engineers acknowledge, assign, take notes, edit runbooks and get a postmortem draft built from the incident record.</p>
+<p><b>Stack:</b> React + TypeScript (Vite) · FastAPI · PostgreSQL with SQLAlchemy 2 and Alembic · Server-Sent Events ·
+JWT + bcrypt · Docker Compose · GitHub Actions · Render blueprint.</p>
 <div class="stats">
   <div class="stat"><b>0%</b><span>false alarms on healthy traffic</span></div>
   <div class="stat"><b>100%</b><span>correct root cause on detected incidents</span></div>
@@ -12,7 +15,78 @@ logs, it answers <b>UNKNOWN</b> and escalates instead of guessing.</p>
 <p>It runs against a real system: the platform API of <b>HOI (Hospitality Operations Intelligence)</b>, a multi-tenant
 FastAPI + MongoDB service. HOI's code is not modified; faults are injected from outside by swapping dependencies HOI
 already isolates, so the copilot reads exactly the log lines HOI writes in production.</p>
-<img class="shot" src="file:///C:/Users/ashut/Downloads/New%20folder%20(9)/oncall-copilot/docs/screenshot.png" alt="Live incident gallery">
+<img class="shot" src="file:///C:/Users/ashut/Downloads/New%20folder%20(9)/oncall-copilot/docs/app/incident.png" alt="Incident page with the live investigation, checks, highlighted evidence and verdict">
+
+<h2>The web app</h2>
+<img class="shot" src="file:///C:/Users/ashut/Downloads/New%20folder%20(9)/oncall-copilot/docs/app/inbox.png" alt="Incident inbox with severity pills, verdicts and the fault simulator">
+<table>
+<tr><th>Page</th><th>What it does</th></tr>
+<tr><td>Incidents</td><td>Inbox filtered by status, severity and text; severity, status and verdict pills; refreshes every 10 s. A simulator panel injects one of the evaluation's faults into the real HOI API and opens whatever incident the alert rules produce.</td></tr>
+<tr><td>Incident</td><td>Facts (service, opened, time to acknowledge/resolve, log window), workflow buttons, assignee; the copilot's investigation streaming live; alerts; timeline with notes.</td></tr>
+<tr><td>Runbooks</td><td>Library and editor with live validation (line-numbered errors), parsed checks preview, version history; only leads can save.</td></tr>
+<tr><td>Dashboard</td><td>Open incidents by severity, median MTTA/MTTR, incidents by service and per day, verdict outcomes, simulated incidents whose verdict matched the injected fault, and the offline evaluation table.</td></tr>
+<tr><td>Postmortem</td><td>Draft built from the record: summary, impact, root cause with evidence, timeline, resolution, action items; download as Markdown.</td></tr>
+</table>
+<div class="mermaid">
+flowchart LR
+  M[Monitoring] -->|POST /api/alerts, X-Alert-Key| API
+  S[Fault simulator: real HOI API in-process] --> API
+  W[React app] -->|JWT| API[FastAPI]
+  API --> DB[(PostgreSQL)]
+  API -->|background task| C[Copilot: retrieve, verify, ground]
+  C -->|each step| DB
+  DB -->|SSE stream| W
+</div>
+<img class="shot" src="file:///C:/Users/ashut/Downloads/New%20folder%20(9)/oncall-copilot/docs/app/dashboard.png" alt="Dashboard with MTTA, MTTR, verdict outcomes and the evaluation table">
+
+<h2>Incidents, alerts and the data model</h2>
+<table>
+<tr><th>Table</th><th>Holds</th></tr>
+<tr><td><code>incidents</code></td><td>Title, service, severity, status, assignee, created/acknowledged/resolved times, captured health probe, simulation ground truth, demo flag, resolution</td></tr>
+<tr><td><code>alerts</code></td><td>Fingerprint, name, summary, severity, source, labels, count, first/last seen, and <code>open_fingerprint</code> (unique)</td></tr>
+<tr><td><code>log_lines</code></td><td>The incident's log window; <code>seq</code> 1..n is the id the copilot cites</td></tr>
+<tr><td><code>investigations</code>, <code>investigation_steps</code></td><td>Status, verdict, full diagnosis, runbook versions used; one row per step</td></tr>
+<tr><td><code>incident_events</code></td><td>Timeline: alerts, repeats, status changes, assignment, notes, verdicts, severity changes</td></tr>
+<tr><td><code>runbooks</code>, <code>runbook_versions</code></td><td>Current markdown and every saved version with editor and comment</td></tr>
+<tr><td><code>users</code>, <code>services</code></td><td>bcrypt password hash and role; service owners</td></tr>
+</table>
+<h3>Deduplication that holds under concurrency</h3>
+<p>An alert whose fingerprint matches an <b>open</b> incident only increments a counter and adds a timeline entry, so nobody
+is paged twice. <code>open_fingerprint</code> equals the fingerprint while the incident is open and becomes NULL when it is
+resolved; its unique constraint means two identical alerts arriving at the same moment cannot both open an incident: the
+second insert fails and is folded into the first. A test fires 8 identical alerts in parallel and expects exactly one
+incident with count 8.</p>
+<h3>Workflow</h3>
+<p>triggered → acknowledged → investigating → resolved. A false alarm can be resolved straight from triggered or
+acknowledged; resolved is final, and resolving requires a resolution text. Invalid moves return 409 with the allowed ones.
+MTTA and MTTR are the mean and median minutes from creation to acknowledgement and to resolution.</p>
+
+<h2>Live investigations</h2>
+<p>The copilot's <code>investigate()</code> gained one optional argument, an observer called after each step (alert rules,
+query, retrieval, each runbook's checks). It only observes, so the diagnosis is unchanged. The web app runs it as a
+background task:</p>
+<ol>
+<li>The incident's log lines are loaded back into the copilot's own log store in order, so the ids it cites are the incident's line numbers.</li>
+<li>The readiness probe captured with the alert is replayed to the <code>health</code> tool (or the probe's failure, if the service was not running).</li>
+<li>Each step is committed to <code>investigation_steps</code>, with the cited log lines attached to each check.</li>
+<li>The browser reads <code>GET /api/investigations/{id}/stream</code>: Server-Sent Events, one <code>step</code> event per step (id = step number) and a final <code>done</code>.</li>
+</ol>
+<p>The stream is read with <code>fetch</code> and a small parser rather than <code>EventSource</code>, so the session token goes in
+the <code>Authorization</code> header and never in a URL; after a dropped connection the client reconnects with
+<code>Last-Event-ID</code> and the server resumes after that step. Steps are paced (350 ms by default) so people can follow
+them; the copilot's own time is reported separately.</p>
+<div class="note"><b>Equivalence test.</b> For all 9 faults, the copilot is run on the live HOI instance and on the stored,
+replayed log window; the verdicts and cited log ids are identical.</div>
+
+<h2>Runbook library</h2>
+<img class="shot" src="file:///C:/Users/ashut/Downloads/New%20folder%20(9)/oncall-copilot/docs/app/runbook-editor.png" alt="Runbook editor showing a validation error for an unknown tool">
+<p>Runbooks live in Postgres in the same markdown format as <code>runbooks/*.md</code> and are parsed by the copilot's own
+parser, so what saves is exactly what the investigator reads. Validation reports invalid JSON in the checks block (with its
+line number), unknown tools (the list comes from the read-only <code>Tools</code> class, so a "restart_service" check is
+impossible), arguments that do not fit the tool's signature, unknown operators, missing sections and an id change. Saving
+creates a new version; the editor sends the version it started from and gets 409 if someone saved in between. The
+retriever is rebuilt only when a runbook changes, and each investigation records which versions it used.</p>
+<img class="shot" src="file:///C:/Users/ashut/Downloads/New%20folder%20(9)/oncall-copilot/docs/app/postmortem.png" alt="Postmortem draft built from the incident record">
 
 <h2>The problem</h2>
 <p>At 3 a.m. an alert says "38% of requests are failing". The engineer must work out <i>why</i>: is the database down,
@@ -154,6 +228,30 @@ Groq, OpenAI or a local Ollama). Its final answer must be JSON with a runbook id
 grounding gate plus one more rule: <b>cited log ids must have been returned by a tool during this investigation</b>, so the
 model cannot invent evidence. It is implemented but not yet evaluated, so no accuracy is claimed for it.</p>
 
+<h2>Security</h2>
+<table>
+<tr><th>Concern</th><th>How</th></tr>
+<tr><td>Passwords</td><td>bcrypt (cost 12); unknown users cost the same time as wrong passwords</td></tr>
+<tr><td>Sessions</td><td>JWT (HS256, 8 h); production refuses to start without a 32+ character secret</td></tr>
+<tr><td>Roles</td><td>engineer: incidents, notes, simulator; lead: also runbook changes</td></tr>
+<tr><td>Brute force</td><td>5 failed logins per user per minute, then 429</td></tr>
+<tr><td>Alert ingestion</td><td><code>X-Alert-Key</code> compared in constant time (or a signed-in engineer)</td></tr>
+<tr><td>Browser</td><td>Token only in the Authorization header (also for SSE); postmortems render React elements, never raw HTML</td></tr>
+<tr><td>LLM</td><td>Optional, server-side only; the HOI harness removes LLM keys from the system under test</td></tr>
+</table>
+
+<h2>Testing and delivery</h2>
+<table>
+<tr><th>Suite</th><th>Count</th><th>Covers</th></tr>
+<tr><td>Copilot unit tests</td><td>11</td><td>Log parsing, BM25, runbook parsing, checks, grounding gate, abstention</td></tr>
+<tr><td>Web app (real Postgres)</td><td>37</td><td>Auth, roles, throttle, dedup incl. 8 parallel alerts, workflow, MTTA/MTTR, stored steps, abstention, SSE stream and resume, postmortem, runbook validation, versions and conflicts, a new runbook changing the next verdict, simulator, live-vs-replayed equivalence for 9 faults</td></tr>
+<tr><td>UI (Testing Library + axe-core)</td><td>15</td><td>SSE parser and reconnect, live investigation panel, abstention display, highlighted evidence, inbox filters, simulator flow, runbook editor errors and conflict, read-only for engineers, markdown safety, accessibility checks</td></tr>
+</table>
+<p>Backend tests use <code>TEST_DATABASE_URL</code> when set (CI: a Postgres service container) or start an embedded Postgres
+with <code>pgserver</code>; the schema is created with the Alembic migrations, as in production. Delivery: an API image that
+migrates on start and clones HOI at a pinned commit for the simulator, an nginx image that serves the app and proxies
+<code>/api</code> with buffering off for SSE, <code>docker-compose.yml</code>, and a Render blueprint.</p>
+
 <h2>Safety and design decisions</h2>
 <ul>
 <li><b>Read-only tools.</b> The copilot never restarts, rolls back or changes anything; a human applies the fix.</li>
@@ -168,15 +266,24 @@ model cannot invent evidence. It is implemented but not yet evaluated, so no acc
 <li>About 60 requests per scenario from one process; thresholds are set for that scale.</li>
 <li>LSA is learned from 16 runbooks; a pretrained embedding model would generalise better and can be plugged in through <code>Embedder</code>.</li>
 <li>All HOI data is synthetic demo data.</li>
+<li>One API process: simulations run one at a time (the harness changes process-wide state) and the SSE stream polls Postgres every 250 ms. Several instances would need <code>LISTEN/NOTIFY</code> or a queue and a separate worker.</li>
+<li>Alerts carry their log window; a real deployment would pull logs from the log platform.</li>
+<li>The 5 demo incidents are real simulations with made-up, backdated response times, labelled demo; the dashboard's MTTA/MTTR include them.</li>
 </ul>
 
 <h2>Running it</h2>
-<pre><code>..\INNOV8\.venv\Scripts\python.exe demo.py --list            # fault names
-..\INNOV8\.venv\Scripts\python.exe demo.py db_down           # one incident note
-..\INNOV8\.venv\Scripts\python.exe -m pytest -q tests        # 11 unit tests
-..\INNOV8\.venv\Scripts\python.exe eval\run_eval.py          # 55 scenarios
-..\INNOV8\.venv\Scripts\python.exe site\build_site.py        # rebuild the live gallery
-$env:GROQ_API_KEY="..."; ..\INNOV8\.venv\Scripts\python.exe eval\run_eval.py --llm</code></pre>
+<pre><code>pip install -r backend/requirements.txt
+$env:DATABASE_URL = python backend/devdb.py         # embedded Postgres (or: docker compose up --build)
+alembic -c backend/alembic.ini upgrade head
+python -m backend.app.seed --demo-incidents
+uvicorn backend.app.main:app --port 8104
+cd frontend; npm install; npm run dev               # http://localhost:5184
+
+python -m pytest -q tests                            # 11 copilot tests
+python -m pytest -q backend/tests                    # 37 web-app tests (real Postgres)
+cd frontend; npm test                               # 15 UI tests
+python eval/run_eval.py                             # 55 scenarios (offline)
+python demo.py db_down                              # one incident note on the command line</code></pre>
 
 <h2>Interview questions</h2>
 <dl class="qa">
@@ -188,6 +295,12 @@ $env:GROQ_API_KEY="..."; ..\INNOV8\.venv\Scripts\python.exe eval\run_eval.py --l
 <dd>BM25 scores and cosine similarities are on different scales; RRF only uses ranks, so no calibration is needed.</dd>
 <dt>How do you know it works?</dt>
 <dd>55 injected faults on a real API, five-mode ablation, zero false alarms, and verification taking wrong diagnoses from 3 to 0. And I state that the numbers are optimistic because I wrote the faults and the checks.</dd>
+<dt>How do you stop two identical alerts from opening two incidents?</dt>
+<dd>A unique column that holds the fingerprint only while the incident is open. Two concurrent inserts cannot both succeed; the loser folds its alert into the winner. A "check, then insert" in Python would race.</dd>
+<dt>Why fetch instead of EventSource for the live stream?</dt>
+<dd>EventSource cannot send an Authorization header, and tokens in URLs end up in logs. fetch with a small parser keeps the header and still supports Last-Event-ID resume.</dd>
+<dt>How do you know the web app gives the same verdict as the evaluated copilot?</dt>
+<dd>It calls the same function on the same log lines, in the same order, with the same health result; a test compares live and replayed verdicts and cited ids for all 9 faults.</dd>
 <dt>What would you do next?</dt>
 <dd>Evaluate the LLM mode, add overlapping faults, use a pretrained embedding model, and test on runbooks and incidents written by someone else.</dd>
 </dl>

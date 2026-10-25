@@ -6,15 +6,50 @@ on:
   pull_request:
 
 jobs:
-  test:
+  backend:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: oncall
+          POSTGRES_PASSWORD: oncall
+          POSTGRES_DB: oncall_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U oncall" --health-interval 3s --health-timeout 3s --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgresql+psycopg://oncall:oncall@localhost:5432/oncall_test
+      HOI_PLATFORM_PATH: ${{ github.workspace }}/hoi/platform_api
     steps:
       - uses: actions/checkout@v4
+      - name: HOI platform (for the simulator tests)
+        uses: actions/checkout@v4
+        with:
+          repository: Ashu-Stark/Hospitality-
+          path: hoi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-      - name: Install
-        run: pip install "numpy>=2.0" "scikit-learn>=1.5" "pytest>=8"
-      - name: Unit tests (retrieval, checks, grounding gate; no HOI instance needed)
+      - run: pip install -r backend/requirements.txt
+      - name: Copilot unit tests
         run: python -m pytest -q tests
+      - name: Web app tests (real Postgres)
+        run: python -m pytest -q backend/tests
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
