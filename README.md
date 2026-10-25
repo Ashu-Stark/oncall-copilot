@@ -1,5 +1,20 @@
 # On-call Runbook Copilot for HOI
 
+[![ci](https://github.com/Ashu-Stark/oncall-copilot/actions/workflows/ci.yml/badge.svg)](https://github.com/Ashu-Stark/oncall-copilot/actions/workflows/ci.yml)
+**[Live incident gallery →](https://ashu-stark.github.io/oncall-copilot/)** one real incident note per fault type, produced by running the copilot against the HOI API.
+
+```mermaid
+flowchart LR
+  F[Fault injector] --> H[HOI platform API<br/>real code, in-process]
+  H --> L[(Log store<br/>SQLite)]
+  L --> A{Alert rules}
+  A -- alert --> R[Hybrid retrieval<br/>BM25 + LSA, RRF<br/>16 runbooks]
+  R -- top 5 --> V[Verify each runbook's checks<br/>with read-only tools]
+  V -- all checks pass --> G[Grounding gate<br/>runbook + cited log lines exist]
+  V -- none pass --> U[UNKNOWN: escalate]
+  G --> N[Incident note<br/>root cause, evidence, next steps]
+```
+
 An on-call assistant for the [HOI platform API](https://github.com/Ashu-Stark/Hospitality-): when an alert fires it
 retrieves the matching runbook, **checks the runbook's claims against the service's own logs**, and writes an incident
 note with the root cause, the log lines that prove it, and the next steps. If nothing is confirmed by the logs it says
@@ -45,6 +60,7 @@ fault injector ──► HOI platform API ──► log store (SQLite) ──►
 ..\INNOV8\.venv\Scripts\python.exe demo.py db_down
 ..\INNOV8\.venv\Scripts\python.exe -m pytest -q tests
 ..\INNOV8\.venv\Scripts\python.exe eval\run_eval.py           # ~55 scenarios, a few minutes
+..\INNOV8\.venv\Scripts\python.exe site\build_site.py         # rebuilds the live gallery in docs/
 $env:GROQ_API_KEY="..."; ..\INNOV8\.venv\Scripts\python.exe eval\run_eval.py --llm   # adds the LLM investigators
 ```
 
