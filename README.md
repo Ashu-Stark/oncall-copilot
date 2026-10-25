@@ -1,6 +1,5 @@
 # On-call Runbook Copilot for HOI
 
-[![ci](https://github.com/Ashu-Stark/oncall-copilot/actions/workflows/ci.yml/badge.svg)](https://github.com/Ashu-Stark/oncall-copilot/actions/workflows/ci.yml)
 **[Live incident gallery →](https://ashu-stark.github.io/oncall-copilot/)** one real incident note per fault type, produced by running the copilot against the HOI API.
 
 ```mermaid
